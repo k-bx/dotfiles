@@ -3,9 +3,6 @@ Dotfiles
 
 My emacs configuration. Maybe something else in future.
 
-- Bitbucket: https://bitbucket.org/k_bx/dotfiles
-- Github: https://github.com/k-bx/dotfiles
-
 Usage
 -----
 
