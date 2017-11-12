@@ -147,11 +147,16 @@
 (define-key etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)
 (define-key global-map (kbd "M-*") 'pop-tag-mark)
 
+(require 'magit)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (setq custom-theme-load-path (cons "~/.emacs.d/themes" custom-theme-load-path))
 
 (defun dark ()
   (interactive)
   (customize-set-variable 'frame-background-mode 'dark)
+  (load-theme 'solarized-dark t)
   (load-theme 'k-bx-2 t)
   (load-theme 'k-bx t)
   )
@@ -252,10 +257,6 @@
   (add-to-list 'tags-table-list (concat (projectile-project-root) "TAGS"))
   (call-interactively 'projectile-dired))
 (setq projectile-switch-project-action 'my-projectile-switch-project-action)
-
-(require 'magit)
-(setq magit-last-seen-setup-instructions "1.4.0")
-(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; markdown
 (require 'markdown-mode)
