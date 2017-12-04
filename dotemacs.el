@@ -125,9 +125,9 @@
 ;; (require 'smooth-scroll)
 ;; (smooth-scroll-mode 1)
 ;; (setq smooth-scroll/vscroll-step-size 5)
-(require 'sublimity)
-(require 'sublimity-scroll)
-(sublimity-mode 1)
+;; (require 'sublimity)
+;; (require 'sublimity-scroll)
+;; (sublimity-mode 1)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
@@ -156,10 +156,8 @@
 (defun dark ()
   (interactive)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'solarized-dark t)
   (load-theme 'k-bx-2 t)
-  (load-theme 'k-bx t)
-  )
+  (load-theme 'k-bx t))
 (defun darks ()
   (interactive)
   (customize-set-variable 'frame-background-mode 'dark)
@@ -172,12 +170,8 @@
   (interactive)
   (customize-set-variable 'frame-background-mode 'light)
   (load-theme 'solarized-light t))
-(defun toggle-theme ()
-  (interactive)
-  (if (eq frame-background-mode 'dark) (light)
-    (dark)))
 
-(dark)
+;; (dark)
 
 ;;;; pretty-lambdada
 (require 'pretty-lambdada)
