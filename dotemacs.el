@@ -251,6 +251,7 @@
   (add-to-list 'tags-table-list (concat (projectile-project-root) "TAGS"))
   (call-interactively 'projectile-dired))
 (setq projectile-switch-project-action 'my-projectile-switch-project-action)
+(define-key global-map (kbd "C-c p s r") 'projectile-ripgrep)
 
 ;; markdown
 (require 'markdown-mode)
@@ -302,6 +303,10 @@
 
 (setq tramp-default-method "ssh")
 
+(require 'multi-term)
+;; (setq multi-term-program "/usr/local/bin/zsh")
+(setq multi-term-program "/bin/bash")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -325,6 +330,7 @@
  '(frame-background-mode (quote light))
  '(global-visual-fill-column-mode t)
  '(global-visual-line-mode nil)
+ '(grep-command "grep  -nH -e +")
  '(grep-find-command
    (quote
     ("find . -type f -exec grep -nH -e  {} + | cut -c1-300" . 34)))
@@ -359,7 +365,7 @@
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
    (quote
-    (nlinum package-build shut-up epl git commander f dash s)))
+    (multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
