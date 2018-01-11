@@ -72,3 +72,4 @@
 (depends-on "ripgrep")
 (depends-on "projectile-ripgrep")
 (depends-on "multi-term")
+(depends-on "idris-mode")

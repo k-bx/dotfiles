@@ -361,11 +361,12 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
+ '(intero-package-version "0.1.24")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
    (quote
-    (multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
+    (idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
