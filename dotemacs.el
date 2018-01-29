@@ -2,13 +2,12 @@
 (package-initialize)
 ;; (setq gc-cons-threshold 100000000)
 
-(set-frame-font "-unknown-Ubuntu Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+(set-frame-font "Ubuntu Mono-12")
 (blink-cursor-mode 0)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 
 (when (eq system-type 'darwin)
   (set-frame-font "Menlo-12")
-  (setq ring-bell-function 'ignore)
   (setq frame-title-format "")
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
@@ -17,6 +16,8 @@
     (ns-set-resource nil "ApplePressAndHoldEnabled" "NO")))
 (when (not (eq system-type 'darwin))
   (menu-bar-mode -1))
+
+(setq ring-bell-function 'ignore)
 
 (global-set-key [S-M-down] 'win-resize-mi2nimize-vert)
 (global-set-key [S-M-up] 'win-resize-enlarge-vert)
@@ -115,11 +116,11 @@
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-separator ":")
 
-(require 'column-marker)
-(add-hook 'text-mode-hook (lambda () (interactive) (column-marker-1 79)))
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 79)))
-(add-hook 'html-mode-hook (lambda () (interactive) (column-marker-1 79)))
-(add-hook 'haskell-mode-hook (lambda () (interactive) (column-marker-1 79)))
+;; (require 'column-marker)
+;; (add-hook 'text-mode-hook (lambda () (interactive) (column-marker-1 79)))
+;; (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 79)))
+;; (add-hook 'html-mode-hook (lambda () (interactive) (column-marker-1 79)))
+;; (add-hook 'haskell-mode-hook (lambda () (interactive) (column-marker-1 79)))
 
 ;;;; smooth scrolling
 ;; (require 'smooth-scroll)
@@ -418,4 +419,3 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
