@@ -7,7 +7,7 @@
 (depends-on "auto-complete")
 (depends-on "cask")
 (depends-on "color-theme")
-(depends-on "column-marker")
+;(depends-on "column-marker")
 (depends-on "company")
 (depends-on "company-ghc")
 (depends-on "company-jedi")
