@@ -326,7 +326,7 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers
    (quote
-    (haskell-ghc haskell-stack-ghc haskell-ghc haskell-hlint)))
+    (haskell-ghc haskell-stack-ghc haskell-ghc)))
  '(frame-background-mode (quote light))
  '(global-visual-fill-column-mode t)
  '(global-visual-line-mode nil)
