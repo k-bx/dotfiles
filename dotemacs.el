@@ -3,6 +3,7 @@
 ;; (setq gc-cons-threshold 100000000)
 
 (set-frame-font "Ubuntu Mono-12")
+
 (blink-cursor-mode 0)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 
@@ -75,8 +76,11 @@
           (set-frame-size (selected-frame) 85 45)
           (set-frame-position (selected-frame) -1 0))
       (progn
-        (set-frame-size (selected-frame) 100 47)
+        (set-frame-size (selected-frame) 54 28)
         (set-frame-position (selected-frame) -1 0))))
+      ;; (progn
+      ;;   (set-frame-size (selected-frame) 100 47)
+      ;;   (set-frame-position (selected-frame) -1 0))))
 
 ;; navigation with M-`Arrow keys`
 (windmove-default-keybindings 'meta)
@@ -325,9 +329,7 @@
  '(deft-use-filename-as-title t)
  '(etags-select-use-short-name-completion nil)
  '(flx-ido-threshhold 6000000)
- '(flycheck-disabled-checkers
-   (quote
-    (haskell-ghc haskell-stack-ghc haskell-ghc)))
+ '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
  '(frame-background-mode (quote light))
  '(global-visual-fill-column-mode t)
  '(global-visual-line-mode nil)
@@ -362,7 +364,7 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.24")
+ '(intero-package-version "0.1.28")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
@@ -413,7 +415,8 @@
  '(jabber-title-large ((t (:inherit variable-pitch :weight bold :height 1.4 :width ultra-expanded))))
  '(jabber-title-medium ((t (:inherit variable-pitch :weight bold :height 1.2 :width expanded))))
  '(juick-user-name-face ((t (:foreground "deep sky blue" :slant normal :weight bold))))
- '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3")))))
+ '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3"))))
+ '(markdown-pre-face ((t (:inherit default :foreground "#93a1a1")))))
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
