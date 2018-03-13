@@ -330,7 +330,7 @@
  '(etags-select-use-short-name-completion nil)
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-fill-column-mode t)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
@@ -356,6 +356,9 @@
  '(haskell-mode-hook
    (quote
     (turn-on-haskell-indentation turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
+ '(haskell-process-args-stack-ghci
+   (quote
+    ("--ghci-options=-ferror-spans -fshow-loaded-modules")))
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
