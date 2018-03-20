@@ -366,7 +366,7 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.28")
+ '(intero-package-version "0.1.30")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
