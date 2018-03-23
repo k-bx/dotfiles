@@ -200,6 +200,10 @@
 (defun my-haskell-mode-hook ()
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
+  ;;(local-set-key "\C-c\C-c" 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
+  ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
   ;; (intero-mode)
   (hindent-mode)
   (interactive-haskell-mode)
@@ -215,6 +219,15 @@
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-elm))
+(defun my-elm-mode-hook ()
+  ;; (ghc-init)
+  (local-set-key "\C-c\C-s" 'elm-mode-format-buffer)
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  )
+(add-hook 'elm-mode-hook 'my-elm-mode-hook)
+
 
 ;;;; flycheck
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
@@ -226,6 +239,8 @@
 (define-key global-map (kbd "M-n") 'flycheck-next-error)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(with-eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 ;; jsx
 
