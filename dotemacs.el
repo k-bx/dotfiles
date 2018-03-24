@@ -2,7 +2,9 @@
 (package-initialize)
 ;; (setq gc-cons-threshold 100000000)
 
-(set-frame-font "Ubuntu Mono-12")
+;; (set-frame-font "Ubuntu Mono-12")
+(set-frame-font "Menlo-10.5")
+;; (set-frame-font "Menlo-11")
 
 (blink-cursor-mode 0)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
@@ -38,6 +40,18 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
+(if (window-system)
+    (if (eq system-type 'darwin)
+        (progn
+          (set-frame-size (selected-frame) 85 45)
+          (set-frame-position (selected-frame) -1 0))
+      (progn
+        (set-frame-size (selected-frame) 54 28)
+        (set-frame-position (selected-frame) -1 0))))
+      ;; (progn
+      ;;   (set-frame-size (selected-frame) 100 47)
+      ;;   (set-frame-position (selected-frame) -1 0))))
+
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (require 'kb-utils)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -69,18 +83,6 @@
 (setq temporary-file-directory "~/tmp")
 (add-hook 'after-save-hook 'autocompile-dotemacs)
 (setq inhibit-splash-screen t)
-
-(if (window-system)
-    (if (eq system-type 'darwin)
-        (progn
-          (set-frame-size (selected-frame) 85 45)
-          (set-frame-position (selected-frame) -1 0))
-      (progn
-        (set-frame-size (selected-frame) 54 28)
-        (set-frame-position (selected-frame) -1 0))))
-      ;; (progn
-      ;;   (set-frame-size (selected-frame) 100 47)
-      ;;   (set-frame-position (selected-frame) -1 0))))
 
 ;; navigation with M-`Arrow keys`
 (windmove-default-keybindings 'meta)
@@ -198,6 +200,10 @@
 (defun my-haskell-mode-hook ()
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
+  ;;(local-set-key "\C-c\C-c" 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
+  ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
   ;; (intero-mode)
   (hindent-mode)
   (interactive-haskell-mode)
@@ -213,6 +219,15 @@
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-elm))
+(defun my-elm-mode-hook ()
+  ;; (ghc-init)
+  (local-set-key "\C-c\C-s" 'elm-mode-format-buffer)
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  )
+(add-hook 'elm-mode-hook 'my-elm-mode-hook)
+
 
 ;;;; flycheck
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
@@ -224,6 +239,8 @@
 (define-key global-map (kbd "M-n") 'flycheck-next-error)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(with-eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 ;; jsx
 
@@ -367,12 +384,12 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.28")
+ '(intero-package-version "0.1.30")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
    (quote
-    (idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
+    (groovy-mode idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook

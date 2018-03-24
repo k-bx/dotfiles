@@ -73,3 +73,6 @@
 (depends-on "projectile-ripgrep")
 (depends-on "multi-term")
 (depends-on "idris-mode")
+(depends-on "groovy-mode")
+(depends-on "elm-mode")
+(depends-on "flycheck-elm")
