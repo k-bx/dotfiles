@@ -201,7 +201,8 @@
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
-  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
   (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
   ;; (intero-mode)
@@ -433,7 +434,8 @@
  '(jabber-title-medium ((t (:inherit variable-pitch :weight bold :height 1.2 :width expanded))))
  '(juick-user-name-face ((t (:foreground "deep sky blue" :slant normal :weight bold))))
  '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3"))))
- '(markdown-pre-face ((t (:inherit default :foreground "#93a1a1")))))
+ '(markdown-pre-face ((t (:inherit default :foreground "#545e5e"))))
+ '(default ((t (:foreground "#3d4444")))))
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
