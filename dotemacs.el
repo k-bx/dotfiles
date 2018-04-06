@@ -200,6 +200,7 @@
 (defun my-haskell-mode-hook ()
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
+  (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
