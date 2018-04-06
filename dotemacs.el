@@ -86,6 +86,10 @@
 
 ;; navigation with M-`Arrow keys`
 (windmove-default-keybindings 'meta)
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-k") 'windmove-up)
+(global-set-key (kbd "M-j") 'windmove-down)
 
 ;; Spaces instead of tabs
 (setq c-basic-indent 4)
