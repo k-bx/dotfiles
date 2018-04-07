@@ -86,6 +86,10 @@
 
 ;; navigation with M-`Arrow keys`
 (windmove-default-keybindings 'meta)
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-k") 'windmove-up)
+(global-set-key (kbd "M-j") 'windmove-down)
 
 ;; Spaces instead of tabs
 (setq c-basic-indent 4)
@@ -200,8 +204,10 @@
 (defun my-haskell-mode-hook ()
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
+  (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
-  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
+  (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
   (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
   ;; (intero-mode)
@@ -436,7 +442,7 @@
  '(jabber-title-medium ((t (:inherit variable-pitch :weight bold :height 1.2 :width expanded))))
  '(juick-user-name-face ((t (:foreground "deep sky blue" :slant normal :weight bold))))
  '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3"))))
- '(markdown-pre-face ((t (:inherit default :foreground "#93a1a1")))))
+ '(markdown-pre-face ((t (:inherit default :foreground "#768282")))))
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
