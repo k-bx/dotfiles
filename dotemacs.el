@@ -203,16 +203,17 @@
 (require 'hindent)
 (defun my-haskell-mode-hook ()
   ;; (ghc-init)
+  (interactive-haskell-mode)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
-  (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
+  ;; (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
   ;; (intero-mode)
+  ;; (turn-on-subword-mode)
   (hindent-mode)
-  (interactive-haskell-mode)
   ;; (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
   ;; (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   ;; (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
@@ -220,7 +221,7 @@
   ;; (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
   ;; (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
   (lambda () (interactive) (column-marker-1 79))
-  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
+  (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
   )
 
 (require 'company)
@@ -376,9 +377,7 @@
  '(haskell-indentation-starter-offset 2)
  '(haskell-indentation-where-post-offset 2)
  '(haskell-indentation-where-pre-offset 2)
- '(haskell-mode-hook
-   (quote
-    (turn-on-haskell-indentation turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
+ '(haskell-mode-hook 'my-haskell-mode-hook)
  '(haskell-process-args-stack-ghci
    (quote
     ("--ghci-options=-ferror-spans -fshow-loaded-modules")))
