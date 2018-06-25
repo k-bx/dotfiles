@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: newtype
+# key: newtype
+# --
+instance Newtype $1 ${} where
+  pack = $1
+  unpack ($1 x) = x
