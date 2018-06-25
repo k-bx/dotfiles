@@ -257,6 +257,23 @@
         ad-do-it)
     ad-do-it))
 
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+;; ;; aligns annotation to the right hand side
+;;(setq company-tooltip-align-annotations t)
+;; formats the buffer before saving
+;;(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 (setq auto-mode-alist 
@@ -393,6 +410,7 @@
  '(package-selected-packages
    (quote
     (groovy-mode idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
+    (tide groovy-mode idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
