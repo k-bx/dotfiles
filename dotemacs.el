@@ -485,5 +485,9 @@
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+;; emacs in terminal doesn't handle C-=
+;; see https://github.com/magnars/expand-region.el/issues/59
+(when (eq system-type 'gnu/linux)
+  (global-set-key (kbd "C-@") 'er/expand-region))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
