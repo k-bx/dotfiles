@@ -202,6 +202,8 @@
 
 (require 'hindent)
 (defun my-haskell-mode-hook ()
+  (hindent-mode)
+  (interactive-haskell-mode)
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
@@ -209,10 +211,8 @@
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
   (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
-  ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))p
+  ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))
   ;; (intero-mode)
-  (hindent-mode)
-  (interactive-haskell-mode)
   ;; (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
   ;; (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   ;; (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
@@ -385,8 +385,8 @@
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*.sublime-workspace" "*_flymake*")))
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
- '(haskell-compile-cabal-build-alt-command "cd %s && stack build")
- '(haskell-compile-cabal-build-command "cd %s && stack build")
+ '(haskell-compile-cabal-build-alt-command "cd %s && stack build --ghc-options=\"-j +RTS -A32M -RTS\"")
+ '(haskell-compile-cabal-build-command "cd %s && stack build --ghc-options=\"-j +RTS -A32M -RTS\"")
  '(haskell-indentation-ifte-offset 2)
  '(haskell-indentation-layout-offset 2)
  '(haskell-indentation-left-offset 2)
@@ -404,12 +404,11 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.30")
+ '(intero-package-version "0.1.31")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
    (quote
-    (groovy-mode idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
     (tide groovy-mode idris-mode multi-term projectile-ripgrep nlinum package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
@@ -424,14 +423,39 @@
  '(python-check-command "pychecker.sh")
  '(python-indent-guess-indent-offset t)
  '(python-indent-offset 4)
+ '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((haskell-process-args-ghci "ghci")
+    ((intero-targets "Haskell-Beanstalk-Consumer:test:test")
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium/accounting-reports" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/accounting-reports" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ";"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium/accounting-reports" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ";"
+                   (getenv "PYTHONPATH")))
+     (haskell-process-args-ghci "ghci")
      (haskell-process-path-ghci . "stack")
      (haskell-process-type . ghci)
      (hindent-style . "johan-tibell")
      (haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 2))))
+     (haskell-indent-spaces . 2)
+     (flycheck-python-pylint-executable . "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-mediabuyer/env/bin/pylint")
+     (flycheck-python-pylint-executable . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env/bin/pylint"))))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(tabbar-separator (quote (0.8)))
