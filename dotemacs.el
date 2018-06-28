@@ -202,6 +202,7 @@
 
 (require 'hindent)
 (defun my-haskell-mode-hook ()
+  (turn-on-subword-mode)
   (hindent-mode)
   (interactive-haskell-mode)
   ;; (ghc-init)
@@ -214,7 +215,6 @@
   ;; (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))
   ;; (intero-mode)
-  ;; (turn-on-subword-mode)
   ;; (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
   ;; (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   ;; (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
@@ -407,7 +407,7 @@
  '(haskell-tags-on-save nil)
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.31")
+ '(intero-package-version "0.1.32")
  '(linum-format " %7i ")
  '(markdown-enable-wiki-links t)
  '(package-selected-packages
