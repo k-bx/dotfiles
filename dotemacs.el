@@ -202,11 +202,11 @@
 
 (require 'hindent)
 (defun my-haskell-mode-hook ()
+  (interactive)
   (turn-on-subword-mode)
   (hindent-mode)
   (interactive-haskell-mode)
   ;; (ghc-init)
-  (interactive-haskell-mode)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
