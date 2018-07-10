@@ -388,8 +388,8 @@
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*.sublime-workspace" "*_flymake*")))
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
- '(haskell-compile-cabal-build-alt-command "cd %s && stack build --ghc-options=\"-j +RTS -A32M -RTS\"")
- '(haskell-compile-cabal-build-command "cd %s && stack build --ghc-options=\"-j +RTS -A32M -RTS\"")
+ '(haskell-compile-cabal-build-alt-command "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
+ '(haskell-compile-cabal-build-command "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
  '(haskell-indentation-ifte-offset 2)
  '(haskell-indentation-layout-offset 2)
  '(haskell-indentation-left-offset 2)
