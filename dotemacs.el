@@ -373,7 +373,8 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
  '(frame-background-mode (quote dark))
- '(global-visual-fill-column-mode t)
+ ;; '(global-visual-fill-column-mode t)
+ ;; '(fill-column 80)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
