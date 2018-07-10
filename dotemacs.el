@@ -2,9 +2,8 @@
 (package-initialize)
 ;; (setq gc-cons-threshold 100000000)
 
-;; (set-frame-font "Ubuntu Mono-12")
-(set-frame-font "Menlo-10.5")
-;; (set-frame-font "Menlo-11")
+(set-frame-font "Ubuntu Mono-9")
+;; (set-frame-font "Menlo-8")
 
 (blink-cursor-mode 0)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
