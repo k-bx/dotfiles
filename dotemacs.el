@@ -44,12 +44,12 @@
         (progn
           (set-frame-size (selected-frame) 85 45)
           (set-frame-position (selected-frame) -1 0))
-      (progn
-        (set-frame-size (selected-frame) 54 28)
-        (set-frame-position (selected-frame) -1 0))))
       ;; (progn
-      ;;   (set-frame-size (selected-frame) 100 47)
+      ;;   (set-frame-size (selected-frame) 54 28)
       ;;   (set-frame-position (selected-frame) -1 0))))
+      (progn
+        (set-frame-size (selected-frame) 100 47)
+        (set-frame-position (selected-frame) -1 0))))
 
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (require 'kb-utils)
@@ -183,9 +183,9 @@
 
 ;; (dark)
 
-;;;; pretty-lambdada
-(require 'pretty-lambdada)
-(add-hook 'python-mode-hook (lambda () (pretty-lambda-mode 1) (turn-on-subword-mode)))
+;; ;;;; pretty-lambdada
+;; (require 'pretty-lambdada)
+;; (add-hook 'python-mode-hook (lambda () (pretty-lambda-mode 1) (turn-on-subword-mode)))
 (require 'adaptive-wrap)
 
 ;;;; haskell-mode
