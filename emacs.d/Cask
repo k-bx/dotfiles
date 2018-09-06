@@ -3,7 +3,7 @@
 (source melpa)
 (depends-on "ac-js2")
 (depends-on "ace-jump-mode")
-(depends-on "adaptive-wrap")
+;; (depends-on "adaptive-wrap")
 (depends-on "auto-complete")
 (depends-on "cask")
 (depends-on "color-theme")
