@@ -69,7 +69,7 @@
 (depends-on "visual-fill-column")
 (depends-on "zenburn-theme")
 (depends-on "sublimity")
-(depends-on "nlinum")
+;; (depends-on "nlinum")
 (depends-on "ripgrep")
 (depends-on "projectile-ripgrep")
 (depends-on "multi-term")
