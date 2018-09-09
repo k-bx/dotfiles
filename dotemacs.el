@@ -355,6 +355,10 @@
 ;; (setq multi-term-program "/usr/local/bin/zsh")
 (setq multi-term-program "/bin/bash")
 
+;; (load-file "~/workspace/cubicaltt/cubicaltt.el")
+(autoload 'cubicaltt-mode "cubicaltt" "cubical editing mode" t)
+(setq auto-mode-alist (append auto-mode-alist '(("\\.ctt$" . cubicaltt-mode))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
