@@ -375,7 +375,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(adaptive-wrap-extra-indent 0)
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
@@ -389,8 +388,6 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
  '(frame-background-mode (quote dark))
- ;; '(global-visual-fill-column-mode t)
- ;; '(fill-column 80)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -446,27 +443,8 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((intero-targets "Haskell-Beanstalk-Consumer:test:test")
      (eval setenv "PYTHONPATH"
            (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium/accounting-reports" ":"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-budget/accounting-reports" ":"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ":"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium-budget/tldr-integration-tests" ";"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium/accounting-reports" ":"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":"
-                   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-           (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ";"
                    (getenv "PYTHONPATH")))
      (haskell-process-args-ghci "ghci")
      (haskell-process-path-ghci . "stack")
