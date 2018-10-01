@@ -389,8 +389,6 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
  '(frame-background-mode (quote dark))
- ;; '(global-visual-fill-column-mode t)
- ;; '(fill-column 80)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -404,15 +402,17 @@
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*.sublime-workspace" "*_flymake*")))
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
- '(haskell-compile-cabal-build-alt-command "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
- '(haskell-compile-cabal-build-command "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
+ '(haskell-compile-cabal-build-alt-command
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
+ '(haskell-compile-cabal-build-command
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
  '(haskell-indentation-ifte-offset 2)
  '(haskell-indentation-layout-offset 2)
  '(haskell-indentation-left-offset 2)
  '(haskell-indentation-starter-offset 2)
  '(haskell-indentation-where-post-offset 2)
  '(haskell-indentation-where-pre-offset 2)
- '(haskell-mode-hook 'my-haskell-mode-hook)
+ '(haskell-mode-hook (quote my-haskell-mode-hook))
  '(haskell-process-args-stack-ghci
    (quote
     ("--ghci-options=-ferror-spans -fshow-loaded-modules")))
@@ -446,7 +446,10 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((intero-targets "Haskell-Beanstalk-Consumer:test:test")
+    ((eval setenv "PYTHONPATH"
+           (concat "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/accounting-reports" ":"
+                   (getenv "PYTHONPATH")))
+     (intero-targets "Haskell-Beanstalk-Consumer:test:test")
      (eval setenv "PYTHONPATH"
            (concat "/home/kb/workspace/ThoughtLeadr/gordium/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium/accounting-reports" ":"
                    (getenv "PYTHONPATH")))
