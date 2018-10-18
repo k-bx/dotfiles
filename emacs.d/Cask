@@ -79,3 +79,4 @@
 (depends-on "flycheck-elm")
 (depends-on "tide")
 (depends-on "cubicaltt")
+(depends-on "add-node-modules-path")
