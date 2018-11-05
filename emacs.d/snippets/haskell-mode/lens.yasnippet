@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: lens
+# key: lens
+# --
+instance Has${1:FieldName} ${2:FieldType} $3 where
+  ${1:$(my/lowercase-first-char yas-text)} =
+    lens
+      ${2:$(my/lowercase-first-char yas-text)}$1
+      (\x y -> x { ${2:$(my/lowercase-first-char yas-text)}$1 = y})

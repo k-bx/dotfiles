@@ -304,6 +304,20 @@
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
+(defun my/capitalize-first-char (&optional string)
+  "Capitalize only the first character of the input STRING."
+  (when (and string (> (length string) 0))
+    (let ((first-char (substring string nil 1))
+          (rest-str   (substring string 1)))
+      (concat (capitalize first-char) rest-str))))
+
+(defun my/lowercase-first-char (&optional string)
+  "Lowercase only the first character of the input STRING."
+  (when (and string (> (length string) 0))
+    (let ((first-char (substring string nil 1))
+          (rest-str   (substring string 1)))
+      (concat (downcase first-char) rest-str))))
+
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -493,7 +507,8 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((eval setenv "PYTHONPATH"
+    ((jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
+     (eval setenv "PYTHONPATH"
            (concat "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/accounting-reports" ":"
                    (getenv "PYTHONPATH")))
      (intero-targets "Haskell-Beanstalk-Consumer:test:test")
