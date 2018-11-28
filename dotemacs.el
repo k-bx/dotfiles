@@ -1,5 +1,42 @@
 ;; (setq debug-on-error t)
+;; (setq debug-on-quit t)
+(require 'package)
+(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade"
+                         . "http://marmalade-repo.org/packages/")
+			 ("melpa"
+			 . "https://melpa.org/packages/")))
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+;; auto-complete
+(setq package-list '(company-ghc company-jedi epc
+                     esup flycheck-rust hindent intero jedi
+                     json-reformat dash magit nix-mode
+                     persistent-scratch sublime-themes tabbar tss
+                     typescript-mode visual-fill-column sublimity
+                     ripgrep projectile-ripgrep idris-mode
+                     elm-mode flycheck-elm tide cubicaltt
+                     add-node-modules-path
+                     color-theme company deft dockerfile-mode
+                     drag-stuff exec-path-from-shell
+                     expand-region feature-mode flx-ido flycheck
+                     flycheck-haskell flycheck-hdevtools flymake
+                     flymake-cursor flymake-haskell-multi
+                     flymake-hlint fuzzy-match ghc haml-mode
+                     haskell-mode hexrgb js2-mode markdown-mode
+                     multiple-cursors popwin pretty-lambdada
+                     projectile rainbow-delimiters rust-mode s
+                     smex smooth-scroll smooth-scrolling
+                     solarized-theme sql-indent tuareg web-mode
+                     wrap-region yaml-mode yasnippet
+                     zenburn-theme nlinum
+                     groovy-mode))
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 ;; (setq gc-cons-threshold 100000000)
 
 (set-frame-font "Ubuntu Mono-9")
@@ -43,7 +80,7 @@
     (if (eq system-type 'darwin)
         (progn
           (set-frame-size (selected-frame) 85 45)
-          (set-frame-position (selected-frame) -1 0))
+          (set-frame-position (selected-frame) 665 0))
       ;; (progn
       ;;   (set-frame-size (selected-frame) 54 28)
       ;;   (set-frame-position (selected-frame) -1 0))))
@@ -58,9 +95,9 @@
 (setq inhibit-startup-message t)
 (global-font-lock-mode t)
 
-;; cask
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+;; ;; cask
+;; (require 'cask "~/.cask/cask.el")
+;; (cask-initialize)
 
 (require 'exec-path-from-shell)
 (setq exec-path-from-shell-arguments '("-l"))
@@ -257,10 +294,10 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (define-key global-map (kbd "M-p") 'flycheck-previous-error)
 (define-key global-map (kbd "M-n") 'flycheck-next-error)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(with-eval-after-load 'flycheck
-      '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+;; (with-eval-after-load 'flycheck
+;;       '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 ;; jsx
 
@@ -367,10 +404,10 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; Auto complete
-(require 'auto-complete-config)
-(ac-config-default)
-(define-key ac-completing-map "\M-/" 'ac-stop)
+;; ;; Auto complete
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (define-key ac-completing-map "\M-/" 'ac-stop)
 
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
@@ -386,10 +423,6 @@
 ;; (setq split-height-threshold nil)
 
 (setq tramp-default-method "ssh")
-
-(require 'multi-term)
-;; (setq multi-term-program "/usr/local/bin/zsh")
-(setq multi-term-program "/bin/bash")
 
 ;; (load-file "~/workspace/cubicaltt/cubicaltt.el")
 (autoload 'cubicaltt-mode "cubicaltt" "cubical editing mode" t)
@@ -592,6 +625,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
  '(flymake-error ((t (:inverse-video nil :underline (:color "font-lock-keyword-face" :style wave) :slant normal :weight normal))))
  '(flymake-warning ((t (:underline t))))
  '(jabber-activity-personal-face ((t (:foreground "deep sky blue" :weight bold))))
