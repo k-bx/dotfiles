@@ -275,6 +275,7 @@
 (defun my-elm-mode-hook ()
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'elm-mode-format-buffer)
+  (turn-on-subword-mode)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   )
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
