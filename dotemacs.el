@@ -1,38 +1,33 @@
 ;; (setq debug-on-error t)
 ;; (setq debug-on-quit t)
 (require 'package)
-(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("elpa" . "https://tromey.com/elpa/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")
                          ("marmalade"
-                         . "http://marmalade-repo.org/packages/")
-			 ("melpa"
-			 . "https://melpa.org/packages/")))
+                         . "https://marmalade-repo.org/packages/")
+			             ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(company-ghc company-jedi epc
-                     esup flycheck-rust hindent intero jedi
-                     json-reformat dash magit nix-mode
-                     persistent-scratch sublime-themes tabbar tss
-                     typescript-mode visual-fill-column sublimity
-                     ripgrep projectile-ripgrep idris-mode
-                     elm-mode flycheck-elm tide cubicaltt
-                     add-node-modules-path
+(setq package-list '(company-ghc company-jedi epc esup flycheck-rust
+                     hindent intero jedi json-reformat dash magit
+                     nix-mode persistent-scratch sublime-themes tabbar
+                     tss typescript-mode visual-fill-column sublimity
+                     ripgrep projectile-ripgrep idris-mode elm-mode
+                     flycheck-elm tide cubicaltt add-node-modules-path
                      color-theme company deft dockerfile-mode
-                     drag-stuff exec-path-from-shell
-                     expand-region feature-mode flx-ido flycheck
-                     flycheck-haskell flycheck-hdevtools flymake
-                     flymake-cursor flymake-haskell-multi
-                     flymake-hlint fuzzy-match ghc haml-mode
-                     haskell-mode hexrgb js2-mode markdown-mode
-                     multiple-cursors popwin pretty-lambdada
-                     projectile rainbow-delimiters rust-mode s
-                     smex smooth-scroll smooth-scrolling
+                     drag-stuff exec-path-from-shell expand-region
+                     feature-mode flx-ido flycheck flycheck-haskell
+                     flycheck-hdevtools flymake flymake-cursor
+                     flymake-haskell-multi flymake-hlint fuzzy-match
+                     ghc haml-mode haskell-mode hexrgb js2-mode
+                     markdown-mode multiple-cursors popwin
+                     pretty-lambdada projectile rainbow-delimiters
+                     rust-mode s smex smooth-scroll smooth-scrolling
                      solarized-theme sql-indent tuareg web-mode
-                     wrap-region yaml-mode yasnippet
-                     zenburn-theme nlinum
-                     groovy-mode))
+                     wrap-region yaml-mode yasnippet zenburn-theme
+                     nlinum groovy-mode))
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
