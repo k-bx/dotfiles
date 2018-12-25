@@ -76,17 +76,21 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
-(if (window-system)
-    (if (eq system-type 'darwin)
+(defun positionize ()
+  (interactive)
+  (if (window-system)
+      (if (eq system-type 'darwin)
+          (progn
+            (set-frame-size (selected-frame) 85 45)
+            (set-frame-position (selected-frame) 665 0))
+        ;; (progn
+        ;;   (set-frame-size (selected-frame) 54 28)
+        ;;   (set-frame-position (selected-frame) -1 0))))
         (progn
-          (set-frame-size (selected-frame) 85 45)
-          (set-frame-position (selected-frame) 665 0))
-      ;; (progn
-      ;;   (set-frame-size (selected-frame) 54 28)
-      ;;   (set-frame-position (selected-frame) -1 0))))
-      (progn
-        (set-frame-size (selected-frame) 100 47)
-        (set-frame-position (selected-frame) -1 0))))
+          (set-frame-size (selected-frame) 100 47)
+          (set-frame-position (selected-frame) -1 0)))))
+
+(positionize)
 
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (require 'kb-utils)
