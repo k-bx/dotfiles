@@ -25,7 +25,7 @@
                      markdown-mode multiple-cursors popwin
                      pretty-lambdada projectile rainbow-delimiters
                      rust-mode s smex smooth-scroll smooth-scrolling
-                     solarized-theme sql-indent tuareg web-mode
+                     solarized-theme sql-indent string-inflection tuareg web-mode
                      wrap-region yaml-mode yasnippet zenburn-theme
                      nlinum groovy-mode))
 (dolist (package package-list)
@@ -453,7 +453,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -522,7 +522,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
@@ -641,6 +641,7 @@
 ;; emacs in terminal doesn't handle C-=
 ;; see https://github.com/magnars/expand-region.el/issues/59
 (global-set-key (kbd "C-c =") 'er/expand-region)
+(require 'string-inflection)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
