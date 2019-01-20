@@ -513,7 +513,7 @@
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.34")
+ '(intero-package-version "0.1.38")
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
