@@ -190,6 +190,7 @@
 (require 'etags-select)
 (global-set-key (kbd "M-.") 'my-ido-find-tag)
 (global-set-key (kbd "M-,") 'my-find-tag)
+(define-key elm-mode-map (kbd "M-,") 'my-find-tag)
 (define-key etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)
 (define-key global-map (kbd "M-*") 'pop-tag-mark)
 
