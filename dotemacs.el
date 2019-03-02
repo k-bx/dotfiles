@@ -190,7 +190,6 @@
 (require 'etags-select)
 (global-set-key (kbd "M-.") 'my-ido-find-tag)
 (global-set-key (kbd "M-,") 'my-find-tag)
-(define-key elm-mode-map (kbd "M-,") 'my-find-tag)
 (define-key etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)
 (define-key global-map (kbd "M-*") 'pop-tag-mark)
 
@@ -282,6 +281,7 @@
   (local-set-key "\C-c\C-s" 'elm-mode-format-buffer)
   (turn-on-subword-mode)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (define-key elm-mode-map (kbd "M-,") 'my-find-tag)
   (setq elm-interactive-command '("elm" "repl")
         elm-reactor-command '("elm" "reactor")
         elm-compile-command '("elm" "make")
