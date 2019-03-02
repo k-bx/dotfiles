@@ -277,6 +277,10 @@
   (local-set-key "\C-c\C-s" 'elm-mode-format-buffer)
   (turn-on-subword-mode)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (setq elm-interactive-command '("elm" "repl")
+        elm-reactor-command '("elm" "reactor")
+        elm-compile-command '("elm" "make")
+        elm-package-command '("elm" "package"))
   )
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
 (eval-after-load 'flycheck
