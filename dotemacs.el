@@ -276,17 +276,18 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-elm))
+(require 'elm-mode)
 (defun my-elm-mode-hook ()
   (turn-on-subword-mode)
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   (define-key elm-mode-map (kbd "M-,") 'my-find-tag)
-  (define-key global-map (kbd "\C-c\C-s") 'elm-mode-format-buffer)
+  (define-key elm-mode-map (kbd "\C-c\C-s") 'elm-mode-format-buffer)
   (setq elm-interactive-command '("elm" "repl")
         elm-reactor-command '("elm" "reactor")
         elm-compile-command '("elm" "make")
         elm-package-command '("elm" "package"))
   )
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
+;; (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
