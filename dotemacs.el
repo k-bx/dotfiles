@@ -280,7 +280,7 @@
   (turn-on-subword-mode)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   (define-key elm-mode-map (kbd "M-,") 'my-find-tag)
-  (define-key elm-mode-map (kbd "\C-c\C-s") 'elm-mode-format-buffer)
+  (define-key global-map (kbd "\C-c\C-s") 'elm-mode-format-buffer)
   (setq elm-interactive-command '("elm" "repl")
         elm-reactor-command '("elm" "reactor")
         elm-compile-command '("elm" "make")
