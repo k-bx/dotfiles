@@ -230,9 +230,7 @@
 
 (light)
 
-;; ;;;; pretty-lambdada
-;; (require 'pretty-lambdada)
-;; (add-hook 'python-mode-hook (lambda () (pretty-lambda-mode 1) (turn-on-subword-mode)))
+(add-hook 'python-mode-hook (lambda () (turn-on-subword-mode)))
 
 ;; (require 'adaptive-wrap)
 
@@ -473,9 +471,9 @@
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
  '(haskell-compile-cabal-build-alt-command
-   "cd %s && stack build --fast --file-watch --ghc-options=\"-j +RTS -A32M -RTS\"")
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
  '(haskell-compile-cabal-build-command
-   "cd %s && stack build --fast --file-watch --ghc-options=\"-j +RTS -A32M -RTS\"")
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
  '(haskell-indentation-ifte-offset 2)
  '(haskell-indentation-layout-offset 2)
  '(haskell-indentation-left-offset 2)
@@ -518,7 +516,7 @@
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.38")
+ '(intero-package-version "0.1.39")
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
