@@ -270,6 +270,17 @@
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
   )
 
+;; docs https://agda.readthedocs.io/en/latest/tools/emacs-mode.html
+(setq load-path (cons "~/workspace/agda/src/data/emacs-mode" load-path))
+(require 'agda2-mode)
+;; (add-hook 'agda2-mode-hook
+;;           '(lambda ()
+;;             ; If you do not want to use any input method:
+;;             (deactivate-input-method)
+;;             ; (In some versions of Emacs you should use
+;;             ; inactivate-input-method instead of
+;;             ; deactivate-input-method.)
+
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (with-eval-after-load 'company
