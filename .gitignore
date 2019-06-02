@@ -2,6 +2,7 @@
 *.eld
 *elc
 *~
+transient
 auto-save-list/**
 emacs.d/.cask
 emacs.d/.python-environments

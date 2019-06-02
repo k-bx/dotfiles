@@ -71,7 +71,7 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
-(defun positionize ()
+(defun positionise ()
   (interactive)
   (if (window-system)
       (if (eq system-type 'darwin)
@@ -85,7 +85,7 @@
           (set-frame-size (selected-frame) 100 47)
           (set-frame-position (selected-frame) -1 0)))))
 
-(positionize)
+(positionise)
 
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (require 'kb-utils)
@@ -345,20 +345,6 @@
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
-(defun my/capitalize-first-char (&optional string)
-  "Capitalize only the first character of the input STRING."
-  (when (and string (> (length string) 0))
-    (let ((first-char (substring string nil 1))
-          (rest-str   (substring string 1)))
-      (concat (capitalize first-char) rest-str))))
-
-(defun my/lowercase-first-char (&optional string)
-  "Lowercase only the first character of the input STRING."
-  (when (and string (> (length string) 0))
-    (let ((first-char (substring string nil 1))
-          (rest-str   (substring string 1)))
-      (concat (downcase first-char) rest-str))))
-
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -516,7 +502,7 @@
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.39")
+ '(intero-package-version "0.1.40")
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
@@ -544,7 +530,9 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
+    ((intero-targets "batonbooks:lib" "batonbooks:exe:batonbooks" "batonbooks:test:test")
+     (intero-targets "servant-elm:lib" "servant-elm:exe:books-example" "servant-elm:exe:e2e-tests-example" "servant-elm:exe:giphy-example" "servant-elm:exe:readme-example" "servant-elm:test:servant-elm-test" "servant-elm:test:servant-elm-test-integration")
+     (jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
      (eval setenv "PYTHONPATH"
            (concat "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/accounting-reports" ":"
                    (getenv "PYTHONPATH")))
