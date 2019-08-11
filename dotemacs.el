@@ -21,7 +21,7 @@
                      feature-mode flx-ido flycheck flycheck-haskell
                      flycheck-hdevtools flymake flymake-cursor
                      flymake-haskell-multi flymake-hlint fuzzy-match
-                     ghc haml-mode haskell-mode hexrgb js2-mode
+                     ghc haml-mode haskell-mode hasklig-mode hexrgb js2-mode
                      markdown-mode multiple-cursors popwin
                      pretty-lambdada projectile rainbow-delimiters
                      rust-mode s smex smooth-scroll smooth-scrolling
@@ -35,6 +35,8 @@
 ;; (setq gc-cons-threshold 100000000)
 
 (set-frame-font "Ubuntu Mono-9")
+;; (set-frame-font "Ubuntu Mono-11")
+;; (set-frame-font "Hasklig-9.5")
 ;; (set-frame-font "Menlo-8")
 
 (blink-cursor-mode 0)
@@ -82,7 +84,7 @@
         ;;   (set-frame-size (selected-frame) 54 28)
         ;;   (set-frame-position (selected-frame) -1 0))))
         (progn
-          (set-frame-size (selected-frame) 100 47)
+          (set-frame-size (selected-frame) 80 40)
           (set-frame-position (selected-frame) -1 0)))))
 
 (positionise)
@@ -250,6 +252,7 @@
   (interactive)
   (turn-on-subword-mode)
   (hindent-mode)
+  (hasklig-mode)
   (interactive-haskell-mode)
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
@@ -522,7 +525,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
