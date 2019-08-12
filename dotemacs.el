@@ -431,6 +431,9 @@
 (autoload 'cubicaltt-mode "cubicaltt" "cubical editing mode" t)
 (setq auto-mode-alist (append auto-mode-alist '(("\\.ctt$" . cubicaltt-mode))))
 
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
