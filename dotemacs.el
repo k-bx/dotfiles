@@ -21,7 +21,7 @@
                      feature-mode flx-ido flycheck flycheck-haskell
                      flycheck-hdevtools flymake flymake-cursor
                      flymake-haskell-multi flymake-hlint fuzzy-match
-                     ghc haml-mode haskell-mode hexrgb js2-mode
+                     ghc haml-mode haskell-mode hasklig-mode hexrgb js2-mode
                      markdown-mode multiple-cursors popwin
                      pretty-lambdada projectile rainbow-delimiters
                      rust-mode s smex smooth-scroll smooth-scrolling
@@ -35,6 +35,9 @@
 ;; (setq gc-cons-threshold 100000000)
 
 (set-frame-font "Ubuntu Mono-9")
+;; (set-frame-font "Ubuntu Mono-11")
+;; (set-frame-font "Hasklig-8")
+;; (set-frame-font "Hasklig-9.5")
 ;; (set-frame-font "Menlo-8")
 
 (blink-cursor-mode 0)
@@ -71,7 +74,7 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
-(defun positionize ()
+(defun positionise ()
   (interactive)
   (if (window-system)
       (if (eq system-type 'darwin)
@@ -82,10 +85,10 @@
         ;;   (set-frame-size (selected-frame) 54 28)
         ;;   (set-frame-position (selected-frame) -1 0))))
         (progn
-          (set-frame-size (selected-frame) 100 47)
+          (set-frame-size (selected-frame) 80 40)
           (set-frame-position (selected-frame) -1 0)))))
 
-(positionize)
+(positionise)
 
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 (require 'kb-utils)
@@ -250,6 +253,7 @@
   (interactive)
   (turn-on-subword-mode)
   (hindent-mode)
+  (hasklig-mode)
   (interactive-haskell-mode)
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
@@ -269,6 +273,17 @@
   (lambda () (interactive) (column-marker-1 79))
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
   )
+
+;; docs https://agda.readthedocs.io/en/latest/tools/emacs-mode.html
+(setq load-path (cons "~/workspace/agda/src/data/emacs-mode" load-path))
+(require 'agda2-mode)
+;; (add-hook 'agda2-mode-hook
+;;           '(lambda ()
+;;             ; If you do not want to use any input method:
+;;             (deactivate-input-method)
+;;             ; (In some versions of Emacs you should use
+;;             ; inactivate-input-method instead of
+;;             ; deactivate-input-method.)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -344,20 +359,6 @@
       (append '(("\\.ml[ily]?$" . tuareg-mode)
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
-
-(defun my/capitalize-first-char (&optional string)
-  "Capitalize only the first character of the input STRING."
-  (when (and string (> (length string) 0))
-    (let ((first-char (substring string nil 1))
-          (rest-str   (substring string 1)))
-      (concat (capitalize first-char) rest-str))))
-
-(defun my/lowercase-first-char (&optional string)
-  "Lowercase only the first character of the input STRING."
-  (when (and string (> (length string) 0))
-    (let ((first-char (substring string nil 1))
-          (rest-str   (substring string 1)))
-      (concat (downcase first-char) rest-str))))
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -443,6 +444,7 @@
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(column-number-mode t)
  '(compilation-message-face (quote default))
+ '(css-indent-offset 2)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
@@ -519,7 +521,7 @@
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(ido-create-new-buffer (quote always))
  '(inhibit-startup-echo-area-message "kb")
- '(intero-package-version "0.1.39")
+ '(intero-package-version "0.1.40")
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
@@ -528,7 +530,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
@@ -547,7 +549,9 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
+    ((intero-targets "batonbooks:lib" "batonbooks:exe:batonbooks" "batonbooks:test:test")
+     (intero-targets "servant-elm:lib" "servant-elm:exe:books-example" "servant-elm:exe:e2e-tests-example" "servant-elm:exe:giphy-example" "servant-elm:exe:readme-example" "servant-elm:test:servant-elm-test" "servant-elm:test:servant-elm-test-integration")
+     (jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
      (eval setenv "PYTHONPATH"
            (concat "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-integration-tests" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-mediabuyer" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-config" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/tldr-models" ":" "/home/kb/workspace/ThoughtLeadr/gordium-develop/accounting-reports" ":"
                    (getenv "PYTHONPATH")))
