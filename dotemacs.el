@@ -36,6 +36,7 @@
 
 (set-frame-font "Ubuntu Mono-9")
 ;; (set-frame-font "Ubuntu Mono-11")
+;; (set-frame-font "Hasklig-8")
 ;; (set-frame-font "Hasklig-9.5")
 ;; (set-frame-font "Menlo-8")
 
