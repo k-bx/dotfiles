@@ -253,7 +253,7 @@
   (interactive)
   (turn-on-subword-mode)
   (hindent-mode)
-  (hasklig-mode)
+  ;; (hasklig-mode)
   (interactive-haskell-mode)
   ;; (ghc-init)
   (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
