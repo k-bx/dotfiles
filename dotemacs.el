@@ -10,7 +10,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(company-ghc company-jedi epc esup flycheck-rust
+(setq package-list '(adaptive-wrap company-ghc company-jedi epc esup flycheck-rust
                      hindent intero jedi json-reformat dash magit
                      nix-mode persistent-scratch sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
