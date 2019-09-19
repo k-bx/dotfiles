@@ -23,7 +23,7 @@
                      flymake-haskell-multi flymake-hlint fuzzy-match
                      ghc haml-mode haskell-mode hasklig-mode hexrgb js2-mode
                      markdown-mode multiple-cursors popwin
-                     pretty-lambdada projectile rainbow-delimiters
+                     pretty-lambdada projectile proof-general rainbow-delimiters
                      rust-mode s smex smooth-scroll smooth-scrolling
                      solarized-theme sql-indent string-inflection tuareg web-mode
                      wrap-region yaml-mode yasnippet zenburn-theme
