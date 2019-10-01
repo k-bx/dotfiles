@@ -11,7 +11,7 @@
   (package-refresh-contents))
 ;; auto-complete
 (setq package-list '(adaptive-wrap company-ghc company-jedi epc esup flycheck-rust
-                     hindent intero jedi json-reformat dash magit
+                     hindent intero jedi json-reformat dash dante magit
                      nix-mode persistent-scratch sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
                      ripgrep projectile-ripgrep idris-mode elm-mode
@@ -304,6 +304,8 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
+(setq flycheck-check-syntax-automatically '(save mode-enabled))
+
 ;;;; flycheck
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 (require 'flycheck)
@@ -461,7 +463,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote dark))
+ '(frame-background-mode (quote light))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -530,7 +532,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
@@ -549,7 +551,27 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((intero-targets "batonbooks:lib" "batonbooks:exe:batonbooks" "batonbooks:test:test")
+    ((dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
+     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
+     (dante-repl-command-line "stack" "repl" dante-target)
+     (dante-repl-command-line quote
+                              ("stack" "repl" dante-target))
+     (intero-targets . "externalogic:lib")
+     (dante-repl-command-line
+      (quote
+       ("stack" "repl" dante-target)))
+     (dante-repl-command-line
+      ("stack" "ghci"))
+     (dante-repl-command-line
+      (quote
+       ("stack" "ghci")))
+     (dante-repl-command-line
+      (quote
+       ("stack ghci")))
+     (dante-project-root "/home/kb/workspace/externalogic")
+     (intero-targets "externalogic:lib")
+     (intero-targets "externalogic:lib" "externalogic:exe:externalogic" "externalogic:test:test")
+     (intero-targets "batonbooks:lib" "batonbooks:exe:batonbooks" "batonbooks:test:test")
      (intero-targets "servant-elm:lib" "servant-elm:exe:books-example" "servant-elm:exe:e2e-tests-example" "servant-elm:exe:giphy-example" "servant-elm:exe:readme-example" "servant-elm:test:servant-elm-test" "servant-elm:test:servant-elm-test-integration")
      (jedi:environment-root . "/home/kb/workspace/ThoughtLeadr/gordium/tldr-mediabuyer/env")
      (eval setenv "PYTHONPATH"
