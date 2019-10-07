@@ -260,7 +260,7 @@
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
-  (define-key haskell-mode-map (kbd "C-c C-x") 'intero-restart)
+  (define-key haskell-mode-map (kbd "C-c C-x") 'dante-restart)
   ;; (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))
   ;; (intero-mode)
