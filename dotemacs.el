@@ -231,7 +231,7 @@
   (customize-set-variable 'frame-background-mode 'light)
   (load-theme 'solarized-light t))
 
-(light)
+(dark)
 
 (add-hook 'python-mode-hook (lambda () (turn-on-subword-mode)))
 
@@ -463,7 +463,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -678,4 +678,4 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(light)
+(dark)
