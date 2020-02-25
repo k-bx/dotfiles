@@ -248,15 +248,16 @@
 ;; ;; (setq ghc-report-errors nil)
 ;; ;; (autoload 'ghc-debug "ghc" nil t)
 
-(require 'hindent)
+(require 'ormolu)
 (defun my-haskell-mode-hook ()
   (interactive)
   (turn-on-subword-mode)
-  (hindent-mode)
+  ;; (hindent-mode)
   ;; (hasklig-mode)
   (interactive-haskell-mode)
+  (adaptive-wrap-prefix-mode t)
   ;; (ghc-init)
-  (local-set-key "\C-c\C-s" 'hindent-reformat-buffer)
+  (local-set-key "\C-c\C-s" 'ormolu-format)
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
@@ -464,7 +465,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -531,6 +532,7 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(ormolu-extra-args (quote ("--ghc-opt" "-XTypeApplications")))
  '(package-selected-packages
    (quote
     (ormolu dhall-mode format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
@@ -613,6 +615,12 @@
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(sql-postgres-login-params
+   (quote
+    ((user :default "postgres")
+     (password :default "password")
+     (server :default "localhost")
+     (database :default "externalogic"))))
  '(tabbar-separator (quote (0.8)))
  '(tabbar-use-images nil)
  '(tags-add-tables t)
