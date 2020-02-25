@@ -10,8 +10,8 @@
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(adaptive-wrap company-ghc company-jedi epc esup flycheck-rust
-                     hindent intero jedi json-reformat dash dante magit
+(setq package-list '(adaptive-wrap company-ghc company-jedi dhall-mode epc esup flycheck-rust
+                     format-all hindent intero jedi json-reformat dash dante magit
                      nix-mode persistent-scratch sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
                      ripgrep projectile-ripgrep idris-mode elm-mode
@@ -22,7 +22,7 @@
                      flycheck-hdevtools flymake flymake-cursor
                      flymake-haskell-multi flymake-hlint fuzzy-match
                      ghc haml-mode haskell-mode hasklig-mode hexrgb js2-mode
-                     markdown-mode multiple-cursors popwin
+                     markdown-mode multiple-cursors ormolu popwin
                      pretty-lambdada projectile proof-general rainbow-delimiters
                      rust-mode s smex smooth-scroll smooth-scrolling
                      solarized-theme sql-indent string-inflection tuareg web-mode
@@ -459,11 +459,12 @@
  '(deft-strip-title-regex "^[#* ]*")
  '(deft-text-mode (quote markdown-mode))
  '(deft-use-filename-as-title t)
+ '(dhall-format-at-save nil)
  '(etags-select-use-short-name-completion nil)
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote dark))
+ '(frame-background-mode (quote light))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -532,7 +533,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (ormolu dhall-mode format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
@@ -551,7 +552,9 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
+    ((intero-targets "github-agent:lib")
+     (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
+     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
      (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
      (dante-repl-command-line "stack" "repl" dante-target)
      (dante-repl-command-line quote
