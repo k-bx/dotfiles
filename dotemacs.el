@@ -487,9 +487,9 @@
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
  '(haskell-compile-cabal-build-alt-command
-   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\" --no-interleaved-output")
  '(haskell-compile-cabal-build-command
-   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\"")
+   "cd %s && stack build --fast --ghc-options=\"-j +RTS -A32M -RTS\" --no-interleaved-output")
  '(haskell-indentation-ifte-offset 2)
  '(haskell-indentation-layout-offset 2)
  '(haskell-indentation-left-offset 2)
