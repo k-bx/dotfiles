@@ -10,7 +10,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(adaptive-wrap company-ghc company-jedi dhall-mode epc esup flycheck-rust
+(setq package-list '(adaptive-wrap bind-key company-ghc company-jedi dhall-mode epc esup flycheck-rust
                      format-all hindent intero jedi json-reformat dash dante magit
                      nix-mode persistent-scratch sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
@@ -249,6 +249,14 @@
 ;; ;; (autoload 'ghc-debug "ghc" nil t)
 
 (require 'ormolu)
+
+(defun dante-enable-or-restart ()
+  (interactive)
+  (if (boundp 'dante-mode)
+      (dante-restart)
+      (dante-mode))
+  )
+
 (defun my-haskell-mode-hook ()
   (interactive)
   (turn-on-subword-mode)
@@ -261,7 +269,8 @@
   (local-set-key "\M-q" 'hindent-reformat-decl-or-fill)
   ;;(local-set-key "\C-c\C-c" 'haskell-compile)
   (define-key haskell-mode-map (kbd "C-c C-d") 'haskell-compile)
-  (define-key haskell-mode-map (kbd "C-c C-x") 'dante-restart)
+  ;; (define-key haskell-mode-map (kbd "C-c C-x") 'dante-restart)
+  (bind-key* (kbd "C-c C-x") 'dante-enable-or-restart)
   ;; (define-key haskell-process-cabal-build (kbd "C-c C-c") 'haskell-compile)
   ;; (local-set-key "\C-c\C-c" (lambda () (interactive) (haskell-compile)))
   ;; (intero-mode)
@@ -276,8 +285,8 @@
   )
 
 ;; docs https://agda.readthedocs.io/en/latest/tools/emacs-mode.html
-(setq load-path (cons "~/workspace/agda/src/data/emacs-mode" load-path))
-(require 'agda2-mode)
+;; (setq load-path (cons "~/workspace/agda/src/data/emacs-mode" load-path))
+;; (require 'agda2-mode)
 ;; (add-hook 'agda2-mode-hook
 ;;           '(lambda ()
 ;;             ; If you do not want to use any input method:
@@ -442,8 +451,8 @@
 (autoload 'cubicaltt-mode "cubicaltt" "cubical editing mode" t)
 (setq auto-mode-alist (append auto-mode-alist '(("\\.ctt$" . cubicaltt-mode))))
 
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+;; (load-file (let ((coding-system-for-read 'utf-8))
+;;                 (shell-command-to-string "agda-mode locate")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -472,7 +481,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote dark))
+ '(frame-background-mode (quote light))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -542,7 +551,7 @@
  '(ormolu-extra-args (quote ("--ghc-opt" "-XTypeApplications")))
  '(package-selected-packages
    (quote
-    (ormolu dhall-mode format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (bind-key ormolu dhall-mode format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
@@ -561,7 +570,8 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((intero-targets "github-agent:lib")
+    ((eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
+     (intero-targets "github-agent:lib")
      (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
      (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
      (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
