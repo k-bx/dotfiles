@@ -85,7 +85,7 @@
         ;;   (set-frame-size (selected-frame) 54 28)
         ;;   (set-frame-position (selected-frame) -1 0))))
         (progn
-          (set-frame-size (selected-frame) 80 40)
+          (set-frame-size (selected-frame) 100 50)
           (set-frame-position (selected-frame) -1 0)))))
 
 (positionise)
@@ -250,11 +250,22 @@
 
 (require 'ormolu)
 
+  ;; (if (and (boundp 'dante-mode) (= dante-mode t))
+
 (defun dante-enable-or-restart ()
   (interactive)
-  (if (boundp 'dante-mode)
-      (dante-restart)
-      (dante-mode))
+  (if (bound-and-true-p dante-mode)
+      (progn
+        (interactive)
+        (message "> restarting dante")
+        (dante-mode t)
+        (dante-restart)
+        )
+      (progn
+        (interactive)
+        (message "> launching dante mode")
+        (dante-mode t)
+        ))
   )
 
 (defun my-haskell-mode-hook ()
@@ -481,7 +492,7 @@
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -570,7 +581,21 @@
  '(ripgrep-arguments (quote ("-M200")))
  '(safe-local-variable-values
    (quote
-    ((eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
+    ((eval setenv "PYTHONPATH"
+           (concat here "scripts/download-articles" ":"
+                   (getenv "PYTHONPATH")))
+     (jedi:server-args)
+     (eval setq jedi:environment-root
+           (concat here "venv"))
+     (eval setq flycheck-python-pylint-executable
+           (concat here "venv/bin/pylint"))
+     (eval setq here
+           (locate-dominating-file
+            (buffer-file-name)
+            ".dir-locals.el"))
+     (dante-repl-command-line "stack" "repl")
+     (dante-repl-command-line "nix-shell" "--run" "stack repl")
+     (eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
      (intero-targets "github-agent:lib")
      (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
      (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
