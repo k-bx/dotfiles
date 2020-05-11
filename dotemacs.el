@@ -723,12 +723,6 @@
  '(default ((t (:background nil))))
  '(flymake-error ((t (:inverse-video nil :underline (:color "font-lock-keyword-face" :style wave) :slant normal :weight normal))))
  '(flymake-warning ((t (:underline t))))
- '(jabber-activity-personal-face ((t (:foreground "deep sky blue" :weight bold))))
- '(jabber-chat-prompt-local ((t (:foreground "deep sky blue" :weight bold))))
- '(jabber-roster-user-online ((t (:foreground "grey90" :slant normal :weight bold))))
- '(jabber-title-large ((t (:inherit variable-pitch :weight bold :height 1.4 :width ultra-expanded))))
- '(jabber-title-medium ((t (:inherit variable-pitch :weight bold :height 1.2 :width expanded))))
- '(juick-user-name-face ((t (:foreground "deep sky blue" :slant normal :weight bold))))
  '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3"))))
  '(markdown-pre-face ((t (:inherit default :foreground "#768282")))))
 
