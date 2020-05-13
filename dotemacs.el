@@ -148,7 +148,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
+  (add-to-list 'company-backends 'company-jedi)
+  ; (setq indent-tabs-mode t)
+  (setq tab-width 4)
+  (setq python-indent-offset 4)
+  )
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; set a beautiful title bar
@@ -298,7 +302,7 @@
 (defun my-rust-mode-hook ()
   (interactive)
   (local-set-key "\C-c\C-d" 'rust-compile)
-  (local-set-key "\C-c\C-x" 'rust-format-buffer)
+  (local-set-key "\C-c\C-s" 'rust-format-buffer)
   )
 
 
