@@ -301,10 +301,11 @@
 
 (defun my-rust-mode-hook ()
   (interactive)
-  (local-set-key "\C-c\C-d" 'rust-compile)
+  ;; (local-set-key "\C-c\C-d" 'rust-compile)
+  (bind-key* (kbd "C-c C-d") 'rust-compile)
   (local-set-key "\C-c\C-s" 'rust-format-buffer)
   )
-
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
 
 ;; docs https://agda.readthedocs.io/en/latest/tools/emacs-mode.html
 ;; (setq load-path (cons "~/workspace/agda/src/data/emacs-mode" load-path))
@@ -521,7 +522,6 @@
  '(haskell-indentation-where-post-offset 2)
  '(haskell-indentation-where-pre-offset 2)
  '(haskell-mode-hook (quote my-haskell-mode-hook))
- '(rust-mode-hook (quote my-rust-mode-hook))
  '(haskell-process-args-stack-ghci
    (quote
     ("--ghci-options=-ferror-spans -fshow-loaded-modules")))
