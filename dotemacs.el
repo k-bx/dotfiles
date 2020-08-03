@@ -10,7 +10,8 @@
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(adaptive-wrap bind-key company-ghc company-jedi dhall-mode epc esup flycheck-rust
+(setq package-list '(adaptive-wrap bind-key company-ghc company-jedi
+                     csharp-mode dhall-mode epc esup flycheck-rust
                      format-all hindent intero jedi json-reformat dash dante magit
                      nix-mode persistent-scratch sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
@@ -497,7 +498,7 @@
  '(etags-select-use-short-name-completion nil)
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote light))
+ '(frame-background-mode (quote dark))
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -540,7 +541,7 @@
  '(ormolu-extra-args (quote ("--ghc-opt" "-XTypeApplications")))
  '(package-selected-packages
    (quote
-    (dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+    (csharp-mode dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
@@ -613,11 +614,8 @@
  '(tabbar-use-images nil)
  '(tags-add-tables t)
  '(tool-bar-mode nil)
- ;; '(vc-annotate-very-old-color nil)
- ;; '(vc-follow-symlinks t)
  '(visual-line-fringe-indicators (quote (nil right-curly-arrow)))
- '(web-mode-code-indent-offset 4)
- )
+ '(web-mode-code-indent-offset 4))
 
 (setq auto-window-vscroll nil)
 
