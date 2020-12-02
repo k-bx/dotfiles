@@ -13,7 +13,7 @@
 (setq package-list '(adaptive-wrap bind-key company-ghc company-go company-jedi
 					 csharp-mode dhall-mode epc esup flycheck-rust
                      format-all go-mode intero jedi json-reformat dash dante magit
-                     nix-mode persistent-scratch sublime-themes tabbar
+                     nix-mode persistent-scratch protobuf-mode sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
                      ripgrep projectile-ripgrep idris-mode elm-mode
                      flycheck-elm tide cubicaltt add-node-modules-path csharp-mode
@@ -693,3 +693,4 @@
 (put 'downcase-region 'disabled nil)
 
 (dark)
+(cd "~")
