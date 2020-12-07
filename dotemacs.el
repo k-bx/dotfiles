@@ -491,37 +491,33 @@
  '(ansi-color-names-vector
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(column-number-mode t)
- '(compilation-message-face (quote default))
+ '(compilation-message-face 'default)
  '(css-indent-offset 2)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
-   (quote
-	("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "1a2fc02ca35192b1447eccd65f10a57373139cf2217b1b65e8d669b33714405b" "3fc732860755c3d1e0e707c56908e37e70df5ef6caef1a1239f476fb656ec8bb" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "00aad3ad602b79bc7132ce0ab68be7eefa4b05fbe9c7956636c98eb0260fb21c" "52fd62dad833cc5feed9ac6028f23d66b2ea00ca3d1c4f05d7a25c2eb0f7ab18" "b48904500d6e652a391f6bf25d52f1be11284ebfd5f7284e87f2b97b23a7dad6" "41c60cc8084c176dffefdea6cdf96a098da260624c454a610121571b7f0d5727" "27d99e38ac398c1d6a4b9fd027cc0cd2bbf53de9da13a1306f9ecdb70d8fa9dd" "144f297981a22c35e14fa0a73748c6d71a7accc031e2cb97785f3782ff236b1b" "0681a3c8f9b8187a63070e59672b1df428c1695c56f64bbe0b69b10b01291f67" "1927fbaf301d12eb45f8b68be6992dba75c0153a86a32cba0f1571c223e38c44" "807fcb675c5c20fac8a23854d07557050049a9502fc87166ac84c9bac6dc32b7" "fda96eb444c409c9d7a2eb1c5a08911dba6559c5e74cc378da397e390d6261b0" "ffb7dcb4f01bdb13825577fb686422dd9c2e65f56bc12029c9147db53c56fa56" "19148913c2ac4d941fac49c1a415293890f98037d53bb899635a98ff80cc2da0" "ccc7f955188fd39d347ea6f5345fed986ae66e054b3da9b23b5c336026e3c757" "59ed08918a5739ec41af343b67a5a4c7cb17b31da49ed409170d1b45c1ccd0cf" "f44a3a5f5f365768a8ac5e17a8b3a4ac05434fb3389afc6f531612382b4340b9" "22fdf3a487954a54eccf91748bef751877687178b936501a2079b51ae056b6cf" "ec5be26eee2af05cbfef6bc3cbc48b4eba01e05953f118bec1d67af3a8060983" "9c50343ced8809392120487b21ed9f66b5db218bd9a69f02cc58224b7452217f" "5065dfe366b9fe61379563d65506f4ae1f030b3a00f13caaa1dc797cb0a26f60" "0aff51567909d728332ba22631bcb2cc4890130dc1261447663ff6147506f847" "99b077e8d793e87e20447d4b52055b2def8c083d09a9800706fe691ac06ef956" "d9843dc0c8ad948f12d0cdd33c0eda1ac62e029f0ad6522aff61f0444506d13c" "168630860e1b184c500fecae8295d861355f09751ff7c763d658af2359999b1a" "9c6ebd6f2e8ed1717f0322f2b3f9dc0e5ef16ae54810648db053875d03fe3db6" "911718851dfaac9e14bfe277aedef9407b759689df8692dddb193fc370082c80" "4b31c03b485367cc56647504ceeca4d657db6d2d1dda295455a5c5259d8fcd75" "6450867a05ce9126b6e6592373b6bbaaf65e637bc27ecc6e9b0375b8cf2ab744" "51dc5b02318828dc0b725ab7c85d8d5cd5b179212bce4aefc3f9db2db00190f4" "32774da9de62df0730e898bd46a1b8be1bde53f236a715dde064c4c1c03a0681" "15569f9ded25f6f841f284eb34a55e17ee4c2b6aa2795158fff6229f585b0bb6" "0fc74cd0e50009abbb8777981ea54dffaa3840f29d1db65ad95f7ca83cbff929" "73078af00076117610bb88f3ef3fe85190a80a85b18a697a8c98d09f593bf4cd" "35193cc0ca34817887bd0a1f88a85679454f36630c3df59dad78e969af9c1c5e" "9eecc40c7205eb97d7c76cab1ce0dfff5ef08a1974830e552b6f48af2e6a2e69" "3fc730c9f3161df13f1ac4d88c7e5e4d4e3477cf8246cfdc794afdf2d72cc625" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "ad4962515d8774d09be38a375cd9c57070e2579bf6aa427b5d40729001f83ea2" "bf42c68919c09268cb40934a66bc75c785001f3872ab5ad85c74988e60809b29" default)))
+   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "1a2fc02ca35192b1447eccd65f10a57373139cf2217b1b65e8d669b33714405b" "3fc732860755c3d1e0e707c56908e37e70df5ef6caef1a1239f476fb656ec8bb" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "00aad3ad602b79bc7132ce0ab68be7eefa4b05fbe9c7956636c98eb0260fb21c" "52fd62dad833cc5feed9ac6028f23d66b2ea00ca3d1c4f05d7a25c2eb0f7ab18" "b48904500d6e652a391f6bf25d52f1be11284ebfd5f7284e87f2b97b23a7dad6" "41c60cc8084c176dffefdea6cdf96a098da260624c454a610121571b7f0d5727" "27d99e38ac398c1d6a4b9fd027cc0cd2bbf53de9da13a1306f9ecdb70d8fa9dd" "144f297981a22c35e14fa0a73748c6d71a7accc031e2cb97785f3782ff236b1b" "0681a3c8f9b8187a63070e59672b1df428c1695c56f64bbe0b69b10b01291f67" "1927fbaf301d12eb45f8b68be6992dba75c0153a86a32cba0f1571c223e38c44" "807fcb675c5c20fac8a23854d07557050049a9502fc87166ac84c9bac6dc32b7" "fda96eb444c409c9d7a2eb1c5a08911dba6559c5e74cc378da397e390d6261b0" "ffb7dcb4f01bdb13825577fb686422dd9c2e65f56bc12029c9147db53c56fa56" "19148913c2ac4d941fac49c1a415293890f98037d53bb899635a98ff80cc2da0" "ccc7f955188fd39d347ea6f5345fed986ae66e054b3da9b23b5c336026e3c757" "59ed08918a5739ec41af343b67a5a4c7cb17b31da49ed409170d1b45c1ccd0cf" "f44a3a5f5f365768a8ac5e17a8b3a4ac05434fb3389afc6f531612382b4340b9" "22fdf3a487954a54eccf91748bef751877687178b936501a2079b51ae056b6cf" "ec5be26eee2af05cbfef6bc3cbc48b4eba01e05953f118bec1d67af3a8060983" "9c50343ced8809392120487b21ed9f66b5db218bd9a69f02cc58224b7452217f" "5065dfe366b9fe61379563d65506f4ae1f030b3a00f13caaa1dc797cb0a26f60" "0aff51567909d728332ba22631bcb2cc4890130dc1261447663ff6147506f847" "99b077e8d793e87e20447d4b52055b2def8c083d09a9800706fe691ac06ef956" "d9843dc0c8ad948f12d0cdd33c0eda1ac62e029f0ad6522aff61f0444506d13c" "168630860e1b184c500fecae8295d861355f09751ff7c763d658af2359999b1a" "9c6ebd6f2e8ed1717f0322f2b3f9dc0e5ef16ae54810648db053875d03fe3db6" "911718851dfaac9e14bfe277aedef9407b759689df8692dddb193fc370082c80" "4b31c03b485367cc56647504ceeca4d657db6d2d1dda295455a5c5259d8fcd75" "6450867a05ce9126b6e6592373b6bbaaf65e637bc27ecc6e9b0375b8cf2ab744" "51dc5b02318828dc0b725ab7c85d8d5cd5b179212bce4aefc3f9db2db00190f4" "32774da9de62df0730e898bd46a1b8be1bde53f236a715dde064c4c1c03a0681" "15569f9ded25f6f841f284eb34a55e17ee4c2b6aa2795158fff6229f585b0bb6" "0fc74cd0e50009abbb8777981ea54dffaa3840f29d1db65ad95f7ca83cbff929" "73078af00076117610bb88f3ef3fe85190a80a85b18a697a8c98d09f593bf4cd" "35193cc0ca34817887bd0a1f88a85679454f36630c3df59dad78e969af9c1c5e" "9eecc40c7205eb97d7c76cab1ce0dfff5ef08a1974830e552b6f48af2e6a2e69" "3fc730c9f3161df13f1ac4d88c7e5e4d4e3477cf8246cfdc794afdf2d72cc625" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "ad4962515d8774d09be38a375cd9c57070e2579bf6aa427b5d40729001f83ea2" "bf42c68919c09268cb40934a66bc75c785001f3872ab5ad85c74988e60809b29" default))
  '(deft-directory "~/Dropbox/Deft")
  '(deft-extension "txt")
  '(deft-strip-title-regex "^[#* ]*")
- '(deft-text-mode (quote markdown-mode))
+ '(deft-text-mode 'markdown-mode)
  '(deft-use-filename-as-title t)
  '(dhall-format-at-save nil)
  '(etags-select-use-short-name-completion nil)
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
- '(flycheck-disabled-checkers (quote (haskell-ghc haskell-stack-ghc haskell-ghc)))
- '(frame-background-mode (quote dark))
+ '(flycheck-disabled-checkers '(haskell-ghc haskell-stack-ghc haskell-ghc))
+ '(frame-background-mode 'dark)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
-   (quote
-	("find . -type f -exec grep -nH -e  {} + | cut -c1-300" . 34)))
+   '("find . -type f -exec grep -nH -e  {} + | cut -c1-300" . 34))
  '(grep-find-ignored-directories
-   (quote
-	("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "cabal-dev" "dist" "build" ".cabal-sandbox" ".idea" "*.egg-info" ".stack-work")))
+   '("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "cabal-dev" "dist" "build" ".cabal-sandbox" ".idea" "*.egg-info" ".stack-work"))
  '(grep-find-ignored-files
-   (quote
-	(".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*.sublime-workspace" "*_flymake*")))
+   '(".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*.sublime-workspace" "*_flymake*"))
  '(grep-find-template
    "find . <X> -type f <F> -exec grep <C> -nH -e <R> {} + | cut -c 1-300")
  '(haskell-compile-cabal-build-alt-command
@@ -534,39 +530,33 @@
  '(haskell-indentation-starter-offset 2)
  '(haskell-indentation-where-post-offset 2)
  '(haskell-indentation-where-pre-offset 2)
- '(haskell-mode-hook (quote my-haskell-mode-hook))
- '(haskell-process-args-stack-ghci
-   (quote
-	("--ghci-options=-ferror-spans -fshow-loaded-modules")))
+ '(haskell-mode-hook 'my-haskell-mode-hook)
+ '(haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-type 'stack-ghci)
  '(haskell-stylish-on-save nil)
  '(haskell-tags-on-save nil)
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
-   (quote
-	("#eef6d970af00" "#cef5e0cccfbb" "#fd55c91cb29c" "#dadbd2efdc17" "#e0a3de02afa1" "#f84bcba1ad99" "#d28bd9ebdf8a")))
+   '("#eef6d970af00" "#cef5e0cccfbb" "#fd55c91cb29c" "#dadbd2efdc17" "#e0a3de02afa1" "#f84bcba1ad99" "#d28bd9ebdf8a"))
  '(highlight-symbol-foreground-color "#586e75")
  '(highlight-tail-colors
-   (quote
-	(("#eee8d5" . 0)
+   '(("#eee8d5" . 0)
 	 ("#b3c34d" . 20)
 	 ("#6ccec0" . 30)
 	 ("#74adf5" . 50)
 	 ("#e1af4b" . 60)
 	 ("#fb7640" . 70)
 	 ("#ff699e" . 85)
-	 ("#eee8d5" . 100))))
+	 ("#eee8d5" . 100)))
  '(hl-bg-colors
-   (quote
-	("#e1af4b" "#fb7640" "#ff6849" "#ff699e" "#8d85e7" "#74adf5" "#6ccec0" "#b3c34d")))
+   '("#e1af4b" "#fb7640" "#ff6849" "#ff699e" "#8d85e7" "#74adf5" "#6ccec0" "#b3c34d"))
  '(hl-fg-colors
-   (quote
-	("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
- '(ido-create-new-buffer (quote always))
+   '("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3"))
+ '(hl-paren-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
+ '(ido-create-new-buffer 'always)
  '(inhibit-startup-echo-area-message "kb")
  '(intero-package-version "0.1.40")
  '(linum-format " %7i ")
@@ -574,31 +564,27 @@
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
  '(nrepl-message-colors
-   (quote
-	("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4")))
- '(ormolu-extra-args (quote ("--ghc-opt" "-XTypeApplications")))
+   '("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4"))
+ '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   (quote
-	(casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s)))
+   '(flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
-   (quote
-	((lambda nil
+   '((lambda nil
 	   (interactive)
 	   (set-title
-		(projectile-project-name))))))
+		(projectile-project-name)))))
  '(py-pychecker-command "pychecker.sh")
- '(py-pychecker-command-args (quote ("")))
+ '(py-pychecker-command-args '(""))
  '(python-check-command "pychecker.sh")
  '(python-indent-guess-indent-offset t)
  '(python-indent-offset 4)
- '(ripgrep-arguments (quote ("-M200")))
+ '(ripgrep-arguments '("-M200"))
  '(safe-local-variable-values
-   (quote
-	((eval setenv "PYTHONPATH"
+   '((eval setenv "PYTHONPATH"
 		   (concat here "" ":"
 				   (getenv "PYTHONPATH")))
 	 (eval setenv "PYTHONPATH"
@@ -637,37 +623,33 @@
 							  ("stack" "repl" dante-target))
 	 (intero-targets . "externalogic:lib")
 	 (dante-repl-command-line
-	  (quote
-	   ("stack" "repl" dante-target)))
+	  '("stack" "repl" dante-target))
 	 (dante-repl-command-line
 	  ("stack" "ghci"))
 	 (dante-repl-command-line
-	  (quote
-	   ("stack" "ghci")))
+	  '("stack" "ghci"))
 	 (dante-repl-command-line
-	  (quote
-	   ("stack ghci")))
+	  '("stack ghci"))
 	 (dante-project-root "/home/kb/workspace/externalogic")
 	 (haskell-process-args-ghci "ghci")
 	 (haskell-process-path-ghci . "stack")
 	 (haskell-process-type . ghci)
 	 (hindent-style . "johan-tibell")
 	 (haskell-process-use-ghci . t)
-	 (haskell-indent-spaces . 2))))
- '(send-mail-function (quote mailclient-send-it))
+	 (haskell-indent-spaces . 2)))
+ '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(sql-postgres-login-params
-   (quote
-    ((user :default "postgres")
-     (password :default "password")
-     (server :default "localhost")
-     (database :default "externalogic"))))
- '(tabbar-separator (quote (0.8)))
+   '((user :default "postgres")
+	 (password :default "password")
+	 (server :default "localhost")
+	 (database :default "externalogic")))
+ '(tabbar-separator '(0.8))
  '(tabbar-use-images nil)
  '(tags-add-tables t)
  '(tool-bar-mode nil)
- '(visual-line-fringe-indicators (quote (nil right-curly-arrow)))
+ '(visual-line-fringe-indicators '(nil right-curly-arrow))
  '(web-mode-code-indent-offset 4))
 
 (setq auto-window-vscroll nil)
