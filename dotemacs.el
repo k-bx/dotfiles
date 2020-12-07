@@ -11,7 +11,7 @@
   (package-refresh-contents))
 ;; auto-complete
 (setq package-list '(adaptive-wrap bind-key company-ghc company-go company-jedi
-					 csharp-mode dhall-mode epc esup flycheck-rust
+					 csharp-mode dhall-mode epc esup flatbuffers-mode flycheck-rust
                      format-all go-mode intero jedi json-reformat dash dante magit
                      nix-mode persistent-scratch protobuf-mode sublime-themes tabbar
                      tss typescript-mode visual-fill-column sublimity
