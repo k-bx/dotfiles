@@ -1,34 +1,102 @@
 ;; (setq debug-on-error t)
 ;; (setq debug-on-quit t)
 (require 'package)
-(setq package-archives '(("elpa" . "https://tromey.com/elpa/")
-                         ("gnu" . "https://elpa.gnu.org/packages/")
-                         ("marmalade"
-                         . "https://marmalade-repo.org/packages/")
-			             ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives
+	  '(("elpa" . "https://tromey.com/elpa/")
+		("gnu" . "https://elpa.gnu.org/packages/")
+		;; ("marmalade" . "https://marmalade-repo.org/packages/")
+		("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list '(adaptive-wrap bind-key company-ghc company-go company-jedi
-					 csharp-mode dhall-mode epc esup flatbuffers-mode flycheck-rust
-                     format-all go-mode intero jedi json-reformat dash dante magit
-                     nix-mode persistent-scratch protobuf-mode sublime-themes tabbar
-                     tss typescript-mode visual-fill-column sublimity
-                     ripgrep projectile-ripgrep idris-mode elm-mode
-                     flycheck-elm tide cubicaltt add-node-modules-path csharp-mode
-                     color-theme company deft dockerfile-mode
-                     drag-stuff exec-path-from-shell expand-region
-                     feature-mode flx-ido flycheck flycheck-haskell
-                     flycheck-hdevtools flymake flymake-cursor
-                     flymake-haskell-multi flymake-hlint fuzzy-match
-                     ghc haml-mode haskell-mode hasklig-mode hexrgb js2-mode
-                     markdown-mode multiple-cursors ormolu popwin
-                     pretty-lambdada projectile proof-general rainbow-delimiters
-                     rust-mode s smex smooth-scroll smooth-scrolling
-                     solarized-theme sql-indent string-inflection tuareg use-package web-mode
-                     wrap-region yaml-mode yasnippet zenburn-theme
-                     nlinum groovy-mode))
+(setq package-list 
+  '(adaptive-wrap 
+    add-node-modules-path 
+    bind-key 
+    color-theme 
+    company
+    company-ghc
+    company-go 
+    company-jedi 
+    csharp-mode 
+    csharp-mode 
+    cubicaltt 
+    dante 
+    dash
+    deft 
+    dhall-mode 
+    dockerfile-mode 
+    drag-stuff 
+    elm-mode 
+    epc 
+    esup
+    exec-path-from-shell
+    expand-region 
+    feature-mode 
+    flatbuffers-mode
+    flx-ido 
+    flycheck 
+    flycheck-elm 
+    flycheck-haskell
+    flycheck-hdevtools 
+    flycheck-rust 
+    flymake 
+    flymake-cursor 
+    flymake-haskell-multi
+    flymake-hlint
+    format-all 
+    ;; fuzzy-match
+    ghc 
+    go-mode 
+    groovy-mode
+    haml-mode 
+    haskell-mode 
+    hasklig-mode 
+    ;; hexrgb
+    idris-mode 
+    intero 
+    jedi 
+    js2-mode
+    json-reformat 
+    magit 
+    markdown-mode 
+    multiple-cursors 
+    nix-mode 
+    nlinum 
+    ormolu 
+    persistent-scratch 
+    popwin
+    ;; pretty-lambdada
+    protobuf-mode
+    projectile 
+    projectile-ripgrep 
+    proof-general 
+    rainbow-delimiters
+    ripgrep
+    rust-mode 
+    s 
+    smex 
+    smooth-scroll 
+    smooth-scrolling
+    solarized-theme 
+    sql-indent 
+    string-inflection 
+    sublime-themes 
+    sublimity 
+    tabbar
+    tide
+    tss 
+    tuareg 
+    typescript-mode 
+    use-package 
+    visual-fill-column 
+    web-mode
+    wrap-region 
+    yaml-mode 
+    yasnippet 
+    zenburn-theme
+))
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
