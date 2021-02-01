@@ -222,16 +222,16 @@ See URL `http://flowtype.org/'."
 
 ;;
 
-(defun my-ido-find-tag ()
-  "Find a tag using ido"
-  (interactive)
-  (tags-completion-table)
-  (let (tag-names)
-    (mapatoms (lambda (x)
-                (push (prin1-to-string x t) tag-names))
-              tags-completion-table)
-    (etags-select-find (ido-completing-read "Tag: " tag-names nil nil
-                                            (thing-at-point 'word)))))
+;; (defun my-ido-find-tag ()
+;;   "Find a tag using ido"
+;;   (interactive)
+;;   (tags-completion-table)
+;;   (let (tag-names)
+;;     (mapatoms (lambda (x)
+;;                 (push (prin1-to-string x t) tag-names))
+;;               tags-completion-table)
+;;     (etags-select-find (ido-completing-read "Tag: " tag-names nil nil
+;;                                             (thing-at-point 'word)))))
 
 (defun my-find-tag ()
   "Find a tag using ido"
