@@ -6,6 +6,7 @@
 *.orig
 transient
 auto-save-list/**
+emacs.d/eln-cache
 emacs.d/.cask
 emacs.d/.python-environments
 emacs.d/ac-comphist.dat

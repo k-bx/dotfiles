@@ -565,7 +565,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
+   ["#f4eedb" "#cc1f24" "#778c00" "#a67c00" "#007ec4" "#c42475" "#11948b" "#88999b"])
  '(column-number-mode t)
  '(compilation-message-face 'default)
  '(css-indent-offset 2)
@@ -584,7 +584,8 @@
  '(etags-select-use-short-name-completion t)
  '(fci-rule-color "#eee8d5")
  '(flx-ido-threshhold 6000000)
- '(flycheck-disabled-checkers '(haskell-ghc haskell-stack-ghc haskell-ghc))
+ '(flycheck-disabled-checkers
+   '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy))
  '(frame-background-mode 'dark)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
@@ -620,13 +621,13 @@
  '(highlight-symbol-foreground-color "#586e75")
  '(highlight-tail-colors
    '(("#eee8d5" . 0)
-	 ("#b3c34d" . 20)
-	 ("#6ccec0" . 30)
-	 ("#74adf5" . 50)
-	 ("#e1af4b" . 60)
-	 ("#fb7640" . 70)
-	 ("#ff699e" . 85)
-	 ("#eee8d5" . 100)))
+     ("#b3c34d" . 20)
+     ("#6ccec0" . 30)
+     ("#74adf5" . 50)
+     ("#e1af4b" . 60)
+     ("#fb7640" . 70)
+     ("#ff699e" . 85)
+     ("#eee8d5" . 100)))
  '(hl-bg-colors
    '("#e1af4b" "#fb7640" "#ff6849" "#ff699e" "#8d85e7" "#74adf5" "#6ccec0" "#b3c34d"))
  '(hl-fg-colors
@@ -650,9 +651,9 @@
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
    '((lambda nil
-	   (interactive)
-	   (set-title
-		(projectile-project-name)))))
+       (interactive)
+       (set-title
+        (projectile-project-name)))))
  '(py-pychecker-command "pychecker.sh")
  '(py-pychecker-command-args '(""))
  '(python-check-command "pychecker.sh")
@@ -661,66 +662,66 @@
  '(ripgrep-arguments '("-M200"))
  '(safe-local-variable-values
    '((eval setenv "PYTHONPATH"
-		   (concat here "" ":"
-				   (getenv "PYTHONPATH")))
-	 (eval setenv "PYTHONPATH"
-		   (concat here "" ":" here "ec2" ":" here "lambdas" ":"
-				   (getenv "PYTHONPATH")))
-	 (eval setq flycheck-pylintrc
-		   (here ".pylintrc"))
-	 (eval setenv "PYTHONPATH"
-		   (concat here "ec2" ":" here "lambdas" ":"
-				   (getenv "PYTHONPATH")))
-	 (eval setq indent-tabs-mode t)
-	 (eval setenv "PYTHONPATH"
-		   (concat here "ec2" ":"
-				   (getenv "PYTHONPATH")))
-	 (eval setenv "PYTHONPATH"
-		   (concat here "scripts/download-articles" ":"
-				   (getenv "PYTHONPATH")))
-	 (jedi:server-args)
-	 (eval setq jedi:environment-root
-		   (concat here "venv"))
-	 (eval setq flycheck-python-pylint-executable
-		   (concat here "venv/bin/pylint"))
-	 (eval setq here
-		   (locate-dominating-file
-			(buffer-file-name)
-			".dir-locals.el"))
-	 (dante-repl-command-line "stack" "repl")
-	 (dante-repl-command-line "nix-shell" "--run" "stack repl")
-	 (eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
-	 (intero-targets "github-agent:lib")
-	 (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
-	 (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
-	 (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
-	 (dante-repl-command-line "stack" "repl" dante-target)
-	 (dante-repl-command-line quote
-							  ("stack" "repl" dante-target))
-	 (intero-targets . "externalogic:lib")
-	 (dante-repl-command-line
-	  '("stack" "repl" dante-target))
-	 (dante-repl-command-line
-	  ("stack" "ghci"))
-	 (dante-repl-command-line
-	  '("stack" "ghci"))
-	 (dante-repl-command-line
-	  '("stack ghci"))
-	 (dante-project-root "/home/kb/workspace/externalogic")
-	 (haskell-process-args-ghci "ghci")
-	 (haskell-process-path-ghci . "stack")
-	 (haskell-process-type . ghci)
-	 (hindent-style . "johan-tibell")
-	 (haskell-process-use-ghci . t)
-	 (haskell-indent-spaces . 2)))
+           (concat here "" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat here "" ":" here "ec2" ":" here "lambdas" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setq flycheck-pylintrc
+           (here ".pylintrc"))
+     (eval setenv "PYTHONPATH"
+           (concat here "ec2" ":" here "lambdas" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setq indent-tabs-mode t)
+     (eval setenv "PYTHONPATH"
+           (concat here "ec2" ":"
+                   (getenv "PYTHONPATH")))
+     (eval setenv "PYTHONPATH"
+           (concat here "scripts/download-articles" ":"
+                   (getenv "PYTHONPATH")))
+     (jedi:server-args)
+     (eval setq jedi:environment-root
+           (concat here "venv"))
+     (eval setq flycheck-python-pylint-executable
+           (concat here "venv/bin/pylint"))
+     (eval setq here
+           (locate-dominating-file
+            (buffer-file-name)
+            ".dir-locals.el"))
+     (dante-repl-command-line "stack" "repl")
+     (dante-repl-command-line "nix-shell" "--run" "stack repl")
+     (eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
+     (intero-targets "github-agent:lib")
+     (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
+     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
+     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
+     (dante-repl-command-line "stack" "repl" dante-target)
+     (dante-repl-command-line quote
+                              ("stack" "repl" dante-target))
+     (intero-targets . "externalogic:lib")
+     (dante-repl-command-line
+      '("stack" "repl" dante-target))
+     (dante-repl-command-line
+      ("stack" "ghci"))
+     (dante-repl-command-line
+      '("stack" "ghci"))
+     (dante-repl-command-line
+      '("stack ghci"))
+     (dante-project-root "/home/kb/workspace/externalogic")
+     (haskell-process-args-ghci "ghci")
+     (haskell-process-path-ghci . "stack")
+     (haskell-process-type . ghci)
+     (hindent-style . "johan-tibell")
+     (haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 2)))
  '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(sql-postgres-login-params
    '((user :default "postgres")
-	 (password :default "password")
-	 (server :default "localhost")
-	 (database :default "externalogic")))
+     (password :default "password")
+     (server :default "localhost")
+     (database :default "externalogic")))
  '(tabbar-separator '(0.8))
  '(tabbar-use-images nil)
  '(tags-add-tables t)
