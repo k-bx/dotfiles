@@ -2,6 +2,8 @@
 *.eld
 *elc
 *~
+*.eln
+*.orig
 transient
 auto-save-list/**
 emacs.d/.cask
