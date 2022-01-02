@@ -1,3 +1,8 @@
+;; useful stuff I keep forgetting:
+;; - visual-line-mode
+;; - visual-fill-column-mode
+;; - display-line-numbers-mode
+
 ;; (setq debug-on-error t)
 ;; (setq debug-on-quit t)
 (require 'package)
