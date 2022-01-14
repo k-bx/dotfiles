@@ -173,6 +173,7 @@
 (positionise)
 
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
+(setq load-path (cons "~/.emacs.d/elisp/lilypond" load-path))
 (require 'kb-utils)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq initial-scratch-message "")
@@ -563,6 +564,9 @@
 
 ;; (load-file (let ((coding-system-for-read 'utf-8))
 ;;                 (shell-command-to-string "agda-mode locate")))
+
+(require 'lilypond-mode)
+(setq auto-mode-alist (append auto-mode-alist '(("\\.ly$" . LilyPond-mode))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
