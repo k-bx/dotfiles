@@ -669,6 +669,7 @@
  '(python-indent-guess-indent-offset t)
  '(python-indent-offset 4)
  '(ripgrep-arguments '("-M200"))
+ '(rust-cargo-default-arguments "--tests")
  '(safe-local-variable-values
    '((eval setenv "PYTHONPATH"
            (concat here "" ":"
