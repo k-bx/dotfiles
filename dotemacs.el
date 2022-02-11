@@ -640,6 +640,7 @@
  '(python-indent-guess-indent-offset t)
  '(python-indent-offset 4)
  '(ripgrep-arguments '("-M200"))
+ '(rust-cargo-default-arguments "--tests")
  '(safe-local-variable-values
    '((eval setenv "PYTHONPATH"
            (concat here "" ":"
@@ -716,6 +717,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
  '(magit-log-head-label-wip ((t (:background "Grey95" :foreground "LightSkyBlue3")))))
 
 (require 'expand-region)
