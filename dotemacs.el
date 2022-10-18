@@ -2,6 +2,7 @@
 ;; - visual-line-mode
 ;; - visual-fill-column-mode
 ;; - display-line-numbers-mode
+;; - toggle-truncate-lines
 
 ;; (setq debug-on-error t)
 ;; (setq debug-on-quit t)
@@ -57,7 +58,8 @@
     ghc 
     go-mode 
     groovy-mode
-	helm
+    helm
+    guess-style
     haml-mode 
     haskell-mode 
     hasklig-mode 
@@ -215,11 +217,19 @@
 (global-set-key (kbd "M-j") 'windmove-down)
 
 ;; Spaces instead of tabs
-(setq c-basic-indent 4)
-(setq tab-width 4)
-(setq indent-tabs-mode nil)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+;; (setq c-basic-indent 4)
+;; (setq tab-width 4)
+;; (setq indent-tabs-mode nil)
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 4)
+;; (setq indent-tabs-mode nil)
+;; (infer-indentation-style)
+(autoload 'guess-style-set-variable "guess-style" nil t)
+(autoload 'guess-style-guess-variable "guess-style")
+(autoload 'guess-style-guess-all "guess-style" nil t)
+(require 'guess-style)
+(add-hook 'markdown-mode-common-hook 'guess-style-guess-all)
+;; (global-guess-style-info-mode 1)
 
 (global-set-key [f11] 'switch-full-screen)
 
@@ -653,7 +663,7 @@
      (eval setenv "PYTHONPATH"
            (concat here "ec2" ":" here "lambdas" ":"
                    (getenv "PYTHONPATH")))
-     (eval setq indent-tabs-mode t)
+     ;; (eval setq indent-tabs-mode t)
      (eval setenv "PYTHONPATH"
            (concat here "ec2" ":"
                    (getenv "PYTHONPATH")))

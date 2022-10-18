@@ -4,6 +4,7 @@
 *~
 *.eln
 *.orig
+.DS_Store
 transient
 auto-save-list/**
 emacs.d/eln-cache
