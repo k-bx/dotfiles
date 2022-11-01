@@ -68,7 +68,8 @@
     intero 
     jedi 
     js2-mode
-    json-reformat 
+    json-reformat
+    lsp-mode
     magit 
     markdown-mode 
     multiple-cursors 
@@ -442,6 +443,8 @@
 ;;             ; inactivate-input-method instead of
 ;;             ; deactivate-input-method.)
 
+(require 'lsp-mode)
+
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (with-eval-after-load 'company
@@ -458,9 +461,11 @@
         elm-package-command '("elm" "package"))
   )
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
-;; (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+(add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'lsp))
 
 (setq flycheck-check-syntax-automatically '(save mode-enabled))
 
@@ -667,7 +672,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
