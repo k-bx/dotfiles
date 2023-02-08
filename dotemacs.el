@@ -23,7 +23,7 @@
     bind-key 
     color-theme 
     company
-    company-ghc
+    ; company-ghc
     company-go 
     company-jedi 
     csharp-mode 
@@ -55,7 +55,7 @@
     format-all 
     ;; fuzzy-match
     geiser-guile
-    ghc 
+    ; ghc 
     go-mode 
     groovy-mode
     helm
@@ -65,7 +65,7 @@
     hasklig-mode 
     ;; hexrgb
     idris-mode 
-    intero 
+    ; intero 
     jedi 
     js2-mode
     json-reformat
@@ -128,7 +128,7 @@
 (defun big6 () (interactive) (set-frame-font "Ubuntu Mono-15"))
 
 (blink-cursor-mode 0)
-(setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
+;; (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 
 (when (eq system-type 'darwin)
   (set-frame-font "Menlo-12")
@@ -167,7 +167,7 @@
       (if (eq system-type 'darwin)
           (progn
             (set-frame-size (selected-frame) 85 45)
-            (set-frame-position (selected-frame) 665 0))
+            (set-frame-position (selected-frame) 855 0))
         ;; (progn
         ;;   (set-frame-size (selected-frame) 54 28)
         ;;   (set-frame-position (selected-frame) -1 0))))
@@ -253,6 +253,8 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; set a beautiful title bar
+(when (string= system-type "darwin")       
+  (setq dired-use-ls-dired nil))
 (setq frame-title-format
       '("%S: " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
