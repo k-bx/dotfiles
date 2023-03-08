@@ -638,7 +638,7 @@
  '(etags-select-use-short-name-completion t)
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers
-   '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy))
+   '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy html-tidy))
  '(frame-background-mode 'dark)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
