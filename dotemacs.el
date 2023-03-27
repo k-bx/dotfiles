@@ -59,6 +59,7 @@
     go-mode 
     groovy-mode
     helm
+	just-mode
     guess-style
     haml-mode 
     haskell-mode 
@@ -220,10 +221,10 @@
 
 ;; Spaces instead of tabs
 ;; (setq c-basic-indent 4)
-;; (setq tab-width 4)
+(setq tab-width 4)
 ;; (setq indent-tabs-mode nil)
 ;; (setq-default indent-tabs-mode nil)
-;; (setq-default tab-width 4)
+(setq-default tab-width 4)
 ;; (setq indent-tabs-mode nil)
 ;; (infer-indentation-style)
 (autoload 'guess-style-set-variable "guess-style" nil t)
@@ -488,6 +489,10 @@
 
 ;; jsx
 
+(setq-default web-mode-comment-formats
+              '(("java"       . "/*")
+                ("javascript" . "//")
+                ("php"        . "/*")))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
@@ -676,14 +681,14 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
    '((lambda nil
-       (interactive)
-       (set-title
-	(projectile-project-name)))))
+	   (interactive)
+	   (set-title
+		(projectile-project-name)))))
  '(py-pychecker-command "pychecker.sh")
  '(py-pychecker-command-args '(""))
  '(python-check-command "pychecker.sh")
@@ -693,64 +698,64 @@
  '(rust-cargo-default-arguments "--tests")
  '(safe-local-variable-values
    '((eval setenv "PYTHONPATH"
-	   (concat here "" ":"
-		   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-	   (concat here "" ":" here "ec2" ":" here "lambdas" ":"
-		   (getenv "PYTHONPATH")))
-     (eval setq flycheck-pylintrc
-	   (here ".pylintrc"))
-     (eval setenv "PYTHONPATH"
-	   (concat here "ec2" ":" here "lambdas" ":"
-		   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-	   (concat here "ec2" ":"
-		   (getenv "PYTHONPATH")))
-     (eval setenv "PYTHONPATH"
-	   (concat here "scripts/download-articles" ":"
-		   (getenv "PYTHONPATH")))
-     (jedi:server-args)
-     (eval setq jedi:environment-root
-	   (concat here "venv"))
-     (eval setq flycheck-python-pylint-executable
-	   (concat here "venv/bin/pylint"))
-     (eval setq here
-	   (locate-dominating-file
-	    (buffer-file-name)
-	    ".dir-locals.el"))
-     (dante-repl-command-line "stack" "repl")
-     (dante-repl-command-line "nix-shell" "--run" "stack repl")
-     (eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
-     (intero-targets "github-agent:lib")
-     (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
-     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
-     (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
-     (dante-repl-command-line "stack" "repl" dante-target)
-     (dante-repl-command-line quote
-			      ("stack" "repl" dante-target))
-     (intero-targets . "externalogic:lib")
-     (dante-repl-command-line
-      '("stack" "repl" dante-target))
-     (dante-repl-command-line
-      ("stack" "ghci"))
-     (dante-repl-command-line
-      '("stack" "ghci"))
-     (dante-repl-command-line
-      '("stack ghci"))
-     (dante-project-root "/home/kb/workspace/externalogic")
-     (haskell-process-args-ghci "ghci")
-     (haskell-process-path-ghci . "stack")
-     (haskell-process-type . ghci)
-     (hindent-style . "johan-tibell")
-     (haskell-process-use-ghci . t)
-     (haskell-indent-spaces . 2)))
+		   (concat here "" ":"
+				   (getenv "PYTHONPATH")))
+	 (eval setenv "PYTHONPATH"
+		   (concat here "" ":" here "ec2" ":" here "lambdas" ":"
+				   (getenv "PYTHONPATH")))
+	 (eval setq flycheck-pylintrc
+		   (here ".pylintrc"))
+	 (eval setenv "PYTHONPATH"
+		   (concat here "ec2" ":" here "lambdas" ":"
+				   (getenv "PYTHONPATH")))
+	 (eval setenv "PYTHONPATH"
+		   (concat here "ec2" ":"
+				   (getenv "PYTHONPATH")))
+	 (eval setenv "PYTHONPATH"
+		   (concat here "scripts/download-articles" ":"
+				   (getenv "PYTHONPATH")))
+	 (jedi:server-args)
+	 (eval setq jedi:environment-root
+		   (concat here "venv"))
+	 (eval setq flycheck-python-pylint-executable
+		   (concat here "venv/bin/pylint"))
+	 (eval setq here
+		   (locate-dominating-file
+			(buffer-file-name)
+			".dir-locals.el"))
+	 (dante-repl-command-line "stack" "repl")
+	 (dante-repl-command-line "nix-shell" "--run" "stack repl")
+	 (eval setenv "NIX_PATH" "nixpkgs=https://github.com/nixos/nixpkgs/archive/681db603640dac395b0f76eb666f39019457131b.tar.gz")
+	 (intero-targets "github-agent:lib")
+	 (intero-targets "lambda-calculus-hs:exe:lambda-calculus-hs")
+	 (dante-repl-command-line "stack" "repl" "--ghc-options=\"-fno-code\"" dante-target)
+	 (dante-repl-command-line "stack" "repl" "--ghc-options=\"-j -fno-code -fobject-code\"" dante-target)
+	 (dante-repl-command-line "stack" "repl" dante-target)
+	 (dante-repl-command-line quote
+							  ("stack" "repl" dante-target))
+	 (intero-targets . "externalogic:lib")
+	 (dante-repl-command-line
+	  '("stack" "repl" dante-target))
+	 (dante-repl-command-line
+	  ("stack" "ghci"))
+	 (dante-repl-command-line
+	  '("stack" "ghci"))
+	 (dante-repl-command-line
+	  '("stack ghci"))
+	 (dante-project-root "/home/kb/workspace/externalogic")
+	 (haskell-process-args-ghci "ghci")
+	 (haskell-process-path-ghci . "stack")
+	 (haskell-process-type . ghci)
+	 (hindent-style . "johan-tibell")
+	 (haskell-process-use-ghci . t)
+	 (haskell-indent-spaces . 2)))
  '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(sql-postgres-login-params
    '((user :default "postgres")
-     (password :default "password")
-     (server :default "localhost")
-     (database :default "externalogic")))
+	 (password :default "password")
+	 (server :default "localhost")
+	 (database :default "externalogic")))
  '(tabbar-separator '(0.8))
  '(tabbar-use-images nil)
  '(tags-add-tables t)
