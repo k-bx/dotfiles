@@ -83,7 +83,8 @@
     protobuf-mode
     projectile 
     projectile-ripgrep 
-    proof-general 
+    proof-general
+	quelpa
     rainbow-delimiters
     ripgrep
     rust-mode 
@@ -262,6 +263,8 @@
 
 (global-auto-revert-mode)
 
+(setq dired-dwim-target t)
+
 ;; Disable C-z madness
 (global-set-key (kbd "C-z") 'undo)
 
@@ -301,6 +304,7 @@
 ;; (global-set-key (kbd "M-,") 'my-find-tag)
 ;; (define-key global-map (kbd "RET") 'helm-etags-select)
 (define-key global-map (kbd "M-*") 'pop-tag-mark)
+(setq tags-revert-without-query 1)
 
 (require 'magit)
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -321,13 +325,13 @@
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'k-bx-2 t)
-  (load-theme 'k-bx t))
+  (load-theme 'solarized-dark-high-contrast t))
 (defun dark2 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'solarized-dark-high-contrast t))
+  (load-theme 'k-bx-2 t)
+  (load-theme 'k-bx t))
 (defun dark3 ()
   (interactive)
   (disable-all-themes)
@@ -680,7 +684,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(quelpa just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
