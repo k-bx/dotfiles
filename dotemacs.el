@@ -34,19 +34,22 @@
     deft 
     dhall-mode 
     dockerfile-mode 
-    drag-stuff 
+    drag-stuff
+	editorconfig
+	eglot
     elm-mode 
     epc 
     esup
     exec-path-from-shell
-    expand-region 
+    expand-region
     feature-mode 
     flatbuffers-mode
     flx-ido 
     flycheck 
     flycheck-elm 
     flycheck-haskell
-    flycheck-hdevtools 
+	flycheck-eglot
+    flycheck-hdevtools
     flycheck-rust 
     flymake 
     flymake-cursor 
@@ -84,8 +87,6 @@
     projectile 
     projectile-ripgrep 
     proof-general
-	quelpa
-	quelpa-use-package
     rainbow-delimiters
     ripgrep
     rust-mode 
@@ -245,6 +246,20 @@
 
 ;; copypaste to X buffer
 (setq x-select-enable-clipboard t)
+
+(use-package company
+  :ensure
+  :custom
+  (company-idle-delay 0.5) ;; how long to wait until popup
+  ;; (company-begin-commands nil) ;; uncomment to disable popup
+  :bind
+  (:map company-active-map
+	      ("C-n". company-select-next)
+	      ("C-p". company-select-previous)
+	      ("M-<". company-select-first)
+	      ("M->". company-select-last)))
+(require 'company)
+(define-key company-mode-map (kbd "C-M-i") 'company-complete)
 
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (defun my/python-mode-hook ()
@@ -431,13 +446,17 @@
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
   )
 
+;; (require 'flycheck-eglot)
+;; (global-flycheck-eglot-mode 1)
 (defun my-rust-mode-hook ()
   (interactive)
   ;; (local-set-key "\C-c\C-d" 'rust-compile)
   (bind-key* (kbd "C-c C-d") 'rust-check)
   (local-set-key "\C-c\C-s" 'rust-format-buffer)
+  ; (local-set-key "A-s" 'rust-format-buffer)
   (setq indent-tabs-mode nil)
   (turn-on-subword-mode)
+  ;; (eglot-ensure)
   )
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)
 
@@ -463,6 +482,7 @@
   (turn-on-subword-mode)
   (adaptive-wrap-prefix-mode t)
   (define-key elm-mode-map (kbd "\C-c\C-s") 'elm-mode-format-buffer)
+  ; (define-key elm-mode-map (kbd "A-f") 'elm-mode-format-buffer)
   (setq elm-interactive-command '("elm" "repl")
         elm-reactor-command '("elm" "reactor")
         elm-compile-command '("elm" "make")
@@ -540,6 +560,13 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+;; (use-package yasnippet
+;;   :ensure
+;;   :config
+;;   (yas-reload-all)
+;;   (add-hook 'prog-mode-hook 'yas-minor-mode)
+;;   (add-hook 'text-mode-hook 'yas-minor-mode))
 
 ;; projectile
 (require 'projectile)
@@ -629,6 +656,15 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+(add-to-list 'load-path "~/workspace/dotfiles/emacs.d/copilot.el")
+(require 'copilot)
+(add-hook 'prog-mode-hook 'copilot-mode)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
+(defconst my-protobuf-style '((c-basic-offset . 4) (indent-tabs-mode . nil)))
+(add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -647,7 +683,7 @@
  '(etags-select-use-short-name-completion t)
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers
-   '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy html-tidy))
+   '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy html-tidy python-pylint))
  '(frame-background-mode 'dark)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
@@ -685,7 +721,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(quelpa-use-package quelpa just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
