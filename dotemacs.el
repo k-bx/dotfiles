@@ -19,8 +19,10 @@
 (setq package-list 
   '(ac-geiser
     adaptive-wrap 
-    add-node-modules-path 
-    bind-key 
+    add-node-modules-path
+	apropospriate-theme
+    bind-key
+	benchmark-init
     color-theme 
     company
     ; company-ghc
@@ -42,7 +44,6 @@
     esup
     exec-path-from-shell
     expand-region
-    feature-mode 
     flatbuffers-mode
     flx-ido 
     flycheck 
@@ -73,13 +74,14 @@
     jedi 
     js2-mode
     json-reformat
-    lsp-mode
+    ;; lsp-mode
     magit 
     markdown-mode 
     multiple-cursors 
     nix-mode 
     nlinum 
-    ormolu 
+    ormolu
+	pastelmac-theme
     persistent-scratch 
     popwin
     ;; pretty-lambdada
@@ -117,6 +119,9 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; (require 'benchmark-init)
+;; (benchmark-init/activate)
+
 ;; (setq gc-cons-threshold 100000000)
 
 ;; (set-frame-font "Ubuntu Mono-9")
@@ -148,14 +153,14 @@
 
 (setq ring-bell-function 'ignore)
 
-(global-set-key [S-M-down] 'win-resize-mi2nimize-vert)
-(global-set-key [S-M-up] 'win-resize-enlarge-vert)
-(global-set-key [S-M-left] 'win-resize-minimize-horiz)
-(global-set-key [S-M-right] 'win-resize-enlarge-horiz)
-(global-set-key [S-M-up] 'win-resize-enlarge-horiz)
-(global-set-key [S-M-down] 'win-resize-minimize-horiz)
-(global-set-key [S-M-left] 'win-resize-enlarge-vert)
-(global-set-key [S-M-right] 'win-resize-minimize-vert)
+;; (global-set-key [S-M-down] 'win-resize-mi2nimize-vert)
+;; (global-set-key [S-M-up] 'win-resize-enlarge-vert)
+;; (global-set-key [S-M-left] 'win-resize-minimize-horiz)
+;; (global-set-key [S-M-right] 'win-resize-enlarge-horiz)
+;; (global-set-key [S-M-up] 'win-resize-enlarge-horiz)
+;; (global-set-key [S-M-down] 'win-resize-minimize-horiz)
+;; (global-set-key [S-M-left] 'win-resize-enlarge-vert)
+;; (global-set-key [S-M-right] 'win-resize-minimize-vert)
 (global-set-key [?\C-,] 'previous-buffer)
 (global-set-key [?\C-.] 'next-buffer)
 (global-set-key [C-tab] 'shift-right)
@@ -341,43 +346,51 @@
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'solarized-dark-high-contrast t))
+  (load-theme 'k-bx-2 t)
+  (load-theme 'k-bx t))
 (defun dark2 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'k-bx-2 t)
-  (load-theme 'k-bx t))
+  (load-theme 'solarized-dark-high-contrast t))
 (defun dark3 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'zenburn t))
+  (load-theme 'apropospriate-dark t))
 (defun dark4 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'misterioso t))
-
-(defun light ()
+  (load-theme 'zenburn t))
+(defun dark5 ()
   (interactive)
   (disable-all-themes)
-  (customize-set-variable 'frame-background-mode 'light)
-  (load-theme 'solarized-light-high-contrast t))
-(defun light2 ()
+  (customize-set-variable 'frame-background-mode 'dark)
+  (load-theme 'misterioso t))
+(defun light ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
   (load-theme 'solarized-selenized-white t))
   ;; (load-theme 'adwaita t))
-
+(defun light2 ()
+  (interactive)
+  (disable-all-themes)
+  (customize-set-variable 'frame-background-mode 'light)
+  (load-theme 'solarized-light-high-contrast t))
 (defun light3 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
-  (load-theme 'light-blue t))
+  (load-theme 'apropospriate-light t))
   ;; (load-theme 'mccarthy t))
 (defun light4 ()
+  (interactive)
+  (disable-all-themes)
+  (customize-set-variable 'frame-background-mode 'light)
+  (load-theme 'pastelmac t))
+(defun light5 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
@@ -471,7 +484,7 @@
 ;;             ; inactivate-input-method instead of
 ;;             ; deactivate-input-method.)
 
-(require 'lsp-mode)
+;; (require 'lsp-mode)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -628,9 +641,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(require 'feature-mode)
-(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
-
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
@@ -721,7 +731,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme lsp-mode ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
@@ -818,6 +828,7 @@
 ;; emacs in terminal doesn't handle C-=
 ;; see https://github.com/magnars/expand-region.el/issues/59
 (global-set-key (kbd "C-c =") 'er/expand-region)
+;; camel-case to underscore etc.
 (require 'string-inflection)
 
 (put 'upcase-region 'disabled nil)
