@@ -6,6 +6,10 @@
 
 ;; (setq debug-on-error t)
 ;; (setq debug-on-quit t)
+(setq load-path (cons "~/.emacs.d/elisp" load-path))
+(setq load-path (cons "~/.emacs.d/elisp/gnu-elpa-keyring-update-2022.12.1" load-path))
+(require 'gnu-elpa-keyring-update)
+
 (require 'package)
 (setq package-archives
 	  '(("elpa" . "https://tromey.com/elpa/")
@@ -37,8 +41,8 @@
     dhall-mode 
     dockerfile-mode 
     drag-stuff
-	editorconfig
-	eglot
+    editorconfig
+    eglot
     elm-mode 
     epc 
     esup
@@ -49,7 +53,7 @@
     flycheck 
     flycheck-elm 
     flycheck-haskell
-	flycheck-eglot
+    ; flycheck-eglot
     flycheck-hdevtools
     flycheck-rust 
     flymake 
@@ -105,7 +109,7 @@
     tabbar
     tide
     ; timu-macos-theme
-    tss 
+    ; tss 
     tuareg 
     typescript-mode 
     use-package 
@@ -188,7 +192,6 @@
 
 (positionise)
 
-(setq load-path (cons "~/.emacs.d/elisp" load-path))
 ;; (setq load-path (cons "~/.emacs.d/elisp/lilypond" load-path))
 (require 'kb-utils)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -253,8 +256,11 @@
 ;; copypaste to X buffer
 (setq x-select-enable-clipboard t)
 
+(require 'bind-key)
 (use-package company
   :ensure
+  :init
+  (require 'bind-key)
   :custom
   (company-idle-delay 0.5) ;; how long to wait until popup
   ;; (company-begin-commands nil) ;; uncomment to disable popup
@@ -671,6 +677,7 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+(setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
 (add-to-list 'load-path "~/workspace/dotfiles/emacs.d/elisp/copilot.el")
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
