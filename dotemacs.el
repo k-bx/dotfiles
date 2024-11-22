@@ -141,6 +141,7 @@
 (defun big4 () (interactive) (set-frame-font "Ubuntu Mono-13"))
 (defun big5 () (interactive) (set-frame-font "Ubuntu Mono-14"))
 (defun big6 () (interactive) (set-frame-font "Ubuntu Mono-15"))
+(defun big10 () (interactive) (set-frame-font "Ubuntu Mono-20"))
 
 (blink-cursor-mode 0)
 ;; (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))

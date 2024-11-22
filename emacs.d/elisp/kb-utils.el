@@ -286,4 +286,9 @@ See URL `http://flowtype.org/'."
     (if (> space-count tab-count) (setq indent-tabs-mode nil))
     (if (> tab-count space-count) (setq indent-tabs-mode t))))
 
+(defun use-spaces-only ()
+  "Set the current buffer to use spaces instead of tabs."
+  (interactive)
+  (setq-local indent-tabs-mode nil))
+
 (provide 'kb-utils)
