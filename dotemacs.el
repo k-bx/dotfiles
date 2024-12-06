@@ -31,7 +31,8 @@
     company
     ; company-ghc
     company-go 
-    company-jedi 
+    company-jedi
+	copilot-chat
     csharp-mode 
     csharp-mode 
     cubicaltt 
@@ -141,6 +142,9 @@
 (defun big4 () (interactive) (set-frame-font "Ubuntu Mono-13"))
 (defun big5 () (interactive) (set-frame-font "Ubuntu Mono-14"))
 (defun big6 () (interactive) (set-frame-font "Ubuntu Mono-15"))
+(defun big7 () (interactive) (set-frame-font "Ubuntu Mono-17"))
+(defun big8 () (interactive) (set-frame-font "Ubuntu Mono-18"))
+(defun big9 () (interactive) (set-frame-font "Ubuntu Mono-19"))
 (defun big10 () (interactive) (set-frame-font "Ubuntu Mono-20"))
 
 (blink-cursor-mode 0)
@@ -678,12 +682,14 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-(setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
+; (setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
 (add-to-list 'load-path "~/workspace/dotfiles/emacs.d/elisp/copilot.el")
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
+(use-package 'copilot-chat)
 
 (defconst my-protobuf-style '((c-basic-offset . 4) (indent-tabs-mode . nil)))
 (add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
@@ -745,7 +751,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(magit-delta 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(copilot-chat magit-delta 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
