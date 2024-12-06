@@ -80,7 +80,7 @@
     json-reformat
     ;; lsp-mode
     magit
-	;; magit-delta
+	magit-delta
     markdown-mode 
     multiple-cursors 
     nix-mode 
@@ -338,7 +338,7 @@
 (require 'magit)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (global-set-key (kbd "C-x g") 'magit-status)
-;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 (setq custom-theme-load-path (cons "~/.emacs.d/themes" custom-theme-load-path))
 
@@ -707,7 +707,7 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers
    '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy html-tidy python-pylint))
- '(frame-background-mode 'dark)
+ '(frame-background-mode 'light)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -739,12 +739,13 @@
  '(ido-create-new-buffer 'always)
  '(inhibit-startup-echo-area-message "kb")
  '(intero-package-version "0.1.40")
+ '(ispell-dictionary nil)
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(magit-delta 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
