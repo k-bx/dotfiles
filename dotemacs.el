@@ -32,7 +32,8 @@
     ; company-ghc
     company-go 
     company-jedi
-	; copilot-chat
+	copilot
+	copilot-chat
     csharp-mode 
     csharp-mode 
     cubicaltt 
@@ -682,6 +683,15 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; ; (setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
+;; (add-to-list 'load-path "~/workspace/dotfiles/emacs.d/elisp/copilot.el")
+(require 'copilot)
+(add-hook 'prog-mode-hook 'copilot-mode)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
+(use-package 'copilot-chat)
+
 (defconst my-protobuf-style '((c-basic-offset . 4) (indent-tabs-mode . nil)))
 (add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
 
@@ -704,7 +714,7 @@
  '(flx-ido-threshhold 6000000)
  '(flycheck-disabled-checkers
    '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust rust-clippy html-tidy python-pylint))
- '(frame-background-mode 'light)
+ '(frame-background-mode 'dark)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -736,13 +746,12 @@
  '(ido-create-new-buffer 'always)
  '(inhibit-startup-echo-area-message "kb")
  '(intero-package-version "0.1.40")
- '(ispell-dictionary nil)
  '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(cmake-mode magit-delta 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(copilot 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
