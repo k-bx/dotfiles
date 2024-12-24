@@ -33,7 +33,7 @@
     company-go 
     company-jedi
 	copilot
-	copilot-chat
+	; copilot-chat
     csharp-mode 
     csharp-mode 
     cubicaltt 
@@ -690,7 +690,7 @@
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 
-(use-package 'copilot-chat)
+; (use-package 'copilot-chat)
 
 (defconst my-protobuf-style '((c-basic-offset . 4) (indent-tabs-mode . nil)))
 (add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
@@ -751,7 +751,7 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(copilot 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
+   '(cmake-mode copilot 0x0 0blayout php-mode pastelmac-theme apropospriate-theme benchmark-init flycheck-eglot eglot editorconfig quelpa-use-package quelpa just-mode timu-macos-theme ac-geiser geiser-guile helm etags-select flatbuffers-mode casharp-mode company-go go-mode csharp-mode use-package dhall-mode bind-key ormolu format-all dante adaptive-wrap proof-general hasklig-mode string-inflection flycheck-elm add-node-modules-path tide groovy-mode idris-mode multi-term projectile-ripgrep package-build shut-up epl git commander f dash s))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
