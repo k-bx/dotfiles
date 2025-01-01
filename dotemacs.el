@@ -683,8 +683,7 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-;; ; (setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
-;; (add-to-list 'load-path "~/workspace/dotfiles/emacs.d/elisp/copilot.el")
+(setq copilot-node-executable "/usr/local/bin/node")
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
