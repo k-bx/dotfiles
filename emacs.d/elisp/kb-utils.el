@@ -291,4 +291,10 @@ See URL `http://flowtype.org/'."
   (interactive)
   (setq-local indent-tabs-mode nil))
 
+;; function which disables tabsfor the current buffer
+;; interactive
+(defun disable-tabs ()
+  (interactive)
+  (setq indent-tabs-mode nil))
+
 (provide 'kb-utils)
