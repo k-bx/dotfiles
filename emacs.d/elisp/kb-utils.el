@@ -297,4 +297,37 @@ See URL `http://flowtype.org/'."
   (interactive)
   (setq indent-tabs-mode nil))
 
+(defun windows-newlines ()
+  "Replace all newlines with Windows-style newlines (CRLF) in the current buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "\n" nil t)
+      (replace-match "\r\n" nil t))))
+
+(defun linux-newlines ()
+  "Replace all Windows-style newlines (CRLF) with Linux-style newlines (LF) in the current buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "\r\n" nil t)
+      (replace-match "\n" nil t))))
+
+(defun xah-open-in-vscode ()
+  "Open current file or dir in vscode.
+URL `http://xahlee.info/emacs/emacs/emacs_open_in_vscode.html'
+
+Version: 2020-02-13 2021-01-18 2022-08-04 2023-06-26"
+  (interactive)
+  (let ((xpath (if buffer-file-name buffer-file-name (expand-file-name default-directory))))
+    (message "path is %s" xpath)
+    (cond
+     ((eq system-type 'darwin)
+      (shell-command (format "open -a Visual\\ Studio\\ Code.app %s" (shell-quote-argument xpath))))
+     ((eq system-type 'windows-nt)
+      (shell-command (format "code.cmd %s" (shell-quote-argument xpath))))
+     ((eq system-type 'gnu/linux)
+      (shell-command (format "code %s" (shell-quote-argument xpath)))))))
+
 (provide 'kb-utils)
+
