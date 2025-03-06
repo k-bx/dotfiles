@@ -681,6 +681,24 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; https://github.com/copilot-emacs/copilot.el/issues/312
+(use-package copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . copilot-accept-completion)
+              ("TAB" . copilot-accept-completion)
+              ("C-TAB" . copilot-accept-completion-by-word)
+              ("C-<tab>" . copilot-accept-completion-by-word)
+              ("C-n" . copilot-next-completion)
+              ("C-p" . copilot-previous-completion))
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+  (add-to-list 'copilot-indentation-alist '(lisp-mode 2))
+  )
 (setq copilot-node-executable "/usr/local/bin/node")
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
@@ -771,7 +789,7 @@
  '(flycheck-disabled-checkers
    '(haskell-ghc haskell-stack-ghc haskell-ghc rust-cargo rust
 				 rust-clippy html-tidy python-pylint))
- '(frame-background-mode 'dark)
+ '(frame-background-mode 'light)
  '(global-visual-line-mode nil)
  '(grep-command "grep  -nH -e +")
  '(grep-find-command
@@ -818,17 +836,7 @@
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
- '(package-selected-packages
-   '(0blayout 0x0 0xc ac-geiser adaptive-wrap add-node-modules-path
-			  apropospriate-theme benchmark-init bind-key casharp-mode
-			  commander company-go csharp-mode dante dash dhall-mode
-			  editorconfig eglot epl etags-select f flatbuffers-mode
-			  flycheck-eglot flycheck-elm format-all geiser-guile git
-			  go-mode groovy-mode hasklig-mode helm idris-mode
-			  just-mode multi-term ormolu package-build
-			  pastelmac-theme php-mode projectile-ripgrep
-			  proof-general quelpa quelpa-use-package s shut-up
-			  string-inflection tide timu-macos-theme use-package))
+ '(package-selected-packages nil)
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
