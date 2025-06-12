@@ -625,6 +625,16 @@
   (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
 (add-hook 'markdown-mode-hook 'my-markdown-mode-hook)
 
+;; Ensure markdown code block font size persists after theme changes
+(defun my-markdown-reset-font (&rest _args)
+  "Reset markdown code block font after theme loads."
+  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
+
+;; Reapply markdown font override after loading any theme
+(advice-add 'load-theme :after #'my-markdown-reset-font)
+
 (require 'server)
 (or (server-running-p) (server-start))
 
@@ -933,3 +943,12 @@
 
 ;; (dark)
 (cd "~")
+;; Ensure markdown code block font size persists after theme changes
+(defun my-markdown-reset-font (&rest _args)
+  "Reset markdown code block font after theme loads."
+  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
+
+;; Reapply markdown font override after loading any theme
+(advice-add 'load-theme :after #'my-markdown-reset-font)
