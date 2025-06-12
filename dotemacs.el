@@ -20,106 +20,106 @@
 (unless package-archive-contents
   (package-refresh-contents))
 ;; auto-complete
-(setq package-list 
+(setq package-list
   '(ac-geiser
-    adaptive-wrap 
+    adaptive-wrap
     add-node-modules-path
 	apropospriate-theme
     bind-key
 	benchmark-init
-    color-theme 
+    color-theme
     company
     ; company-ghc
-    company-go 
+    company-go
     company-jedi
 	copilot
 	; copilot-chat
-    csharp-mode 
-    csharp-mode 
-    cubicaltt 
-    dante 
+    csharp-mode
+    csharp-mode
+    cubicaltt
+    dante
     dash
-    deft 
-    dhall-mode 
-    dockerfile-mode 
+    deft
+    dhall-mode
+    dockerfile-mode
     drag-stuff
     editorconfig
     eglot
-    elm-mode 
-    epc 
+    elm-mode
+    epc
     esup
     exec-path-from-shell
     expand-region
     flatbuffers-mode
-    flx-ido 
-    flycheck 
-    flycheck-elm 
+    flx-ido
+    flycheck
+    flycheck-elm
     flycheck-haskell
     ; flycheck-eglot
     flycheck-hdevtools
-    flycheck-rust 
-    flymake 
-    flymake-cursor 
+    flycheck-rust
+    flymake
+    flymake-cursor
     flymake-haskell-multi
     flymake-hlint
-    format-all 
+    format-all
     ;; fuzzy-match
     geiser-guile
-    ; ghc 
-    go-mode 
+    ; ghc
+    go-mode
     groovy-mode
     helm
 	just-mode
     guess-style
-    haml-mode 
-    haskell-mode 
-    hasklig-mode 
+    haml-mode
+    haskell-mode
+    hasklig-mode
     ;; hexrgb
-    idris-mode 
-    ; intero 
-    jedi 
+    idris-mode
+    ; intero
+    jedi
     js2-mode
     json-reformat
     ;; lsp-mode
     magit
 	magit-delta
-    markdown-mode 
-    multiple-cursors 
-    nix-mode 
-    nlinum 
+    markdown-mode
+    multiple-cursors
+    nix-mode
+    nlinum
     ormolu
 	pastelmac-theme
-    persistent-scratch 
+    persistent-scratch
     popwin
     ;; pretty-lambdada
     protobuf-mode
-    projectile 
-    projectile-ripgrep 
+    projectile
+    projectile-ripgrep
     proof-general
     rainbow-delimiters
     ripgrep
-    rust-mode 
-    s 
-    smex 
-    smooth-scroll 
+    rust-mode
+    s
+    smex
+    smooth-scroll
     smooth-scrolling
-    solarized-theme 
-    sql-indent 
-    string-inflection 
-    sublime-themes 
-    sublimity 
+    solarized-theme
+    sql-indent
+    string-inflection
+    sublime-themes
+    sublimity
     tabbar
     tide
     ; timu-macos-theme
-    ; tss 
-    tuareg 
-    typescript-mode 
-    use-package 
-    visual-fill-column 
+    ; tss
+    tuareg
+    typescript-mode
+    use-package
+    visual-fill-column
     web-mode
-    wrap-region 
-    yaml-mode 
-    yasnippet 
+    wrap-region
+    yaml-mode
+    yasnippet
     zenburn-theme
 ))
 (dolist (package package-list)
@@ -290,7 +290,7 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; set a beautiful title bar
-(when (string= system-type "darwin")       
+(when (string= system-type "darwin")
   (setq dired-use-ls-dired nil))
 (setq frame-title-format
       '("%S: " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
@@ -516,7 +516,6 @@
         elm-compile-command '("elm" "make")
         elm-package-command '("elm" "package"))
   (elm-indent-simple-mode)
-  (elm-oracle-setup-completion)
   )
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
 (eval-after-load 'flycheck
@@ -581,7 +580,7 @@
 
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-(setq auto-mode-alist 
+(setq auto-mode-alist
       (append '(("\\.ml[ily]?$" . tuareg-mode)
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
@@ -616,10 +615,14 @@
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (defun my-markdown-mode-hook ()
+  "Custom configurations for markdown-mode."  
   (interactive)
   (adaptive-wrap-prefix-mode t)
   (toggle-word-wrap t)
-  )
+  ;; Set fixed-width font for code blocks
+  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
+  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
 (add-hook 'markdown-mode-hook 'my-markdown-mode-hook)
 
 (require 'server)
@@ -704,6 +707,7 @@
 (add-hook 'prog-mode-hook 'copilot-mode)
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+(setq copilot-indent-offset-warning-disable t)
 
 ; (use-package 'copilot-chat)
 
@@ -778,7 +782,7 @@
 	 "ad4962515d8774d09be38a375cd9c57070e2579bf6aa427b5d40729001f83ea2"
 	 "bf42c68919c09268cb40934a66bc75c785001f3872ab5ad85c74988e60809b29"
 	 default))
- '(deft-directory "~/Nextcloud/Notes")
+ '(deft-directory "~/workspace/Notes")
  '(deft-extension "txt")
  '(deft-strip-title-regex "^[#* ]*")
  '(deft-text-mode 'markdown-mode)
@@ -882,12 +886,6 @@
 							  dante-target)
 	 (dante-repl-command-line "stack" "repl" dante-target)
 	 (dante-repl-command-line quote ("stack" "repl" dante-target))
-	 (intero-targets . "externalogic:lib")
-	 (dante-repl-command-line '("stack" "repl" dante-target))
-	 (dante-repl-command-line ("stack" "ghci"))
-	 (dante-repl-command-line '("stack" "ghci"))
-	 (dante-repl-command-line '("stack ghci"))
-	 (dante-project-root "/home/kb/workspace/externalogic")
 	 (haskell-process-args-ghci "ghci")
 	 (haskell-process-path-ghci . "stack")
 	 (haskell-process-type . ghci) (hindent-style . "johan-tibell")
@@ -895,8 +893,7 @@
  '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(sql-postgres-login-params
-   '((user :default "postgres") (password :default "password")
-	 (server :default "localhost") (database :default "externalogic")))
+   '((user :default "postgres") (password :default "password")))
  '(tabbar-separator '(0.8))
  '(tabbar-use-images nil)
  '(tags-add-tables t)
