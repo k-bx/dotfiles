@@ -475,15 +475,27 @@
   (setq haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans -fshow-loaded-modules"))
   )
 
-;; (require 'flycheck-eglot)
-;; (global-flycheck-eglot-mode 1)
-(defun my-rust-mode-hook ()
+(defun my-rust-cargo-fmt ()
+  "Format the current Rust file with `cargo fmt`, then refresh the buffer."
   (interactive)
-  (local-set-key "\C-c\C-s" 'rust-format-buffer)
-  (setq indent-tabs-mode nil)
-  (turn-on-subword-mode)
-  ;; (eglot-ensure)
-  )
+  (unless buffer-file-name
+    (error "This buffer isn’t visiting a file"))
+  ;; Run in the nearest crate root so `cargo fmt` picks up the right config.
+  (let* ((file  buffer-file-name)
+         (root  (or (locate-dominating-file file "Cargo.toml")
+                    (error "Couldn't find Cargo.toml above %s" file)))
+         (default-directory root)
+         (exit (call-process "cargo" nil "*cargo fmt*" nil "fmt" "--" file)))
+    (if (zerop exit)
+        (revert-buffer t t t)           ; silently reload on success
+      (pop-to-buffer "*cargo fmt*")     ; show errors
+      (error "`cargo fmt` failed (exit %d)" exit))))
+
+(defun my-rust-mode-hook ()
+  (local-set-key (kbd "C-c C-s") #'my-rust-cargo-fmt)
+  (setq-local indent-tabs-mode nil)
+  (subword-mode +1))
+
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)
 (with-eval-after-load 'rust-mode
   (define-key rust-mode-map (kbd "C-c C-d") 'rust-check))
@@ -850,7 +862,26 @@
  '(magit-diff-use-overlays nil)
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(0blayout 0x0 0xc ac-geiser adaptive-wrap add-node-modules-path
+			  apropospriate-theme benchmark-init chatgpt-shell
+			  cmake-mode color-theme company-go company-jedi copilot
+			  copilot-chat csharp-mode cubicaltt dante deft dhall-mode
+			  dockerfile-mode drag-stuff eglot elm-mode esup
+			  exec-path-from-shell expand-region flatbuffers-mode
+			  flx-ido flycheck-elm flycheck-haskell flycheck-hdevtools
+			  flycheck-rust flymake-cursor flymake-haskell-multi
+			  flymake-hlint format-all geiser-guile groovy-mode
+			  guess-style haml-mode hasklig-mode helm idris-mode jedi
+			  js2-mode json-reformat just-mode magit-delta
+			  multiple-cursors nix-mode nlinum ormolu pastelmac-theme
+			  persistent-scratch popwin projectile-ripgrep
+			  proof-general protobuf-mode rainbow-delimiters rust-mode
+			  smex smooth-scroll smooth-scrolling solarized-theme
+			  sql-indent string-inflection sublime-themes sublimity
+			  tabbar tide tuareg typescript-mode use-package
+			  visual-fill-column web-mode wrap-region yaml-mode
+			  yasnippet zenburn-theme))
  '(projectile-generic-command
    "find . -type f -not -name \"*.hi\" -not -name \"*.o\" -not -name \"*.p_o\" -not -name \"*.p_hi\" -not -name \"*.pyc\" -not -path \"*/cabal-dev/*\" -not -path \"*/.cabal-sandbox/*\" -not -path \"*/dist/*\" -not -path \"*/build/*\" -not -path \"*/.git/*\" -not -path \"*/javadoc/*\" -print0")
  '(projectile-switch-project-hook
