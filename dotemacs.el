@@ -394,7 +394,10 @@
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
-  (load-theme 'solarized-light-high-contrast t))
+  (load-theme 'solarized-light-high-contrast t)
+  ;; Apply markdown code customization after theme loads
+  (when (facep 'markdown-inline-code-face)
+    (set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold)))
 (defun light3 ()
   (interactive)
   (disable-all-themes)
@@ -627,25 +630,21 @@
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (defun my-markdown-mode-hook ()
-  "Custom configurations for markdown-mode."  
+  "Custom configurations for markdown-mode."
   (interactive)
   (adaptive-wrap-prefix-mode t)
   (toggle-word-wrap t)
-  ;; Set fixed-width font for code blocks
-  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
+  ;; Set stronger color for code blocks
+  (set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold))
+
+;; Also apply after markdown loads
+(eval-after-load 'markdown-mode
+  '(set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold))
 (add-hook 'markdown-mode-hook 'my-markdown-mode-hook)
 
-;; Ensure markdown code block font size persists after theme changes
-(defun my-markdown-reset-font (&rest _args)
-  "Reset markdown code block font after theme loads."
-  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
 
-;; Reapply markdown font override after loading any theme
-(advice-add 'load-theme :after #'my-markdown-reset-font)
+
+
 
 (require 'server)
 (or (server-running-p) (server-start))
@@ -863,17 +862,17 @@
  '(markdown-enable-wiki-links t)
  '(ormolu-extra-args '("--ghc-opt" "-XTypeApplications"))
  '(package-selected-packages
-   '(0blayout 0x0 0xc ac-geiser adaptive-wrap add-node-modules-path
+   '(0blayout 0x0 ac-geiser adaptive-wrap add-node-modules-path
 			  apropospriate-theme benchmark-init chatgpt-shell
-			  cmake-mode color-theme company-go company-jedi copilot
-			  copilot-chat csharp-mode cubicaltt dante deft dhall-mode
-			  dockerfile-mode drag-stuff eglot elm-mode esup
-			  exec-path-from-shell expand-region flatbuffers-mode
-			  flx-ido flycheck-elm flycheck-haskell flycheck-hdevtools
-			  flycheck-rust flymake-cursor flymake-haskell-multi
-			  flymake-hlint format-all geiser-guile groovy-mode
-			  guess-style haml-mode hasklig-mode helm idris-mode jedi
-			  js2-mode json-reformat just-mode magit-delta
+			  color-theme company-go company-jedi copilot csharp-mode
+			  cubicaltt dante deft dhall-mode dockerfile-mode
+			  drag-stuff eglot elm-mode esup exec-path-from-shell
+			  expand-region flatbuffers-mode flx-ido flycheck-elm
+			  flycheck-haskell flycheck-hdevtools flycheck-rust
+			  flymake-cursor flymake-haskell-multi flymake-hlint
+			  format-all geiser-guile groovy-mode guess-style
+			  haml-mode hasklig-mode helm idris-mode jedi js2-mode
+			  json-reformat just-mode magit-delta markdown-mode
 			  multiple-cursors nix-mode nlinum ormolu pastelmac-theme
 			  persistent-scratch popwin projectile-ripgrep
 			  proof-general protobuf-mode rainbow-delimiters rust-mode
@@ -974,12 +973,3 @@
 
 ;; (dark)
 (cd "~")
-;; Ensure markdown code block font size persists after theme changes
-(defun my-markdown-reset-font (&rest _args)
-  "Reset markdown code block font after theme loads."
-  (set-face-attribute 'markdown-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-inline-code-face nil :font "Ubuntu Mono-11")
-  (set-face-attribute 'markdown-pre-face nil :font "Ubuntu Mono-11"))
-
-;; Reapply markdown font override after loading any theme
-(advice-add 'load-theme :after #'my-markdown-reset-font)
