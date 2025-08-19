@@ -707,7 +707,7 @@
 
 ;; https://github.com/copilot-emacs/copilot.el/issues/312
 (use-package copilot
-  :hook (prog-mode . copilot-mode)
+  ;; Disabled auto-enable; enable manually via `M-x copilot-mode`.
   :bind (:map copilot-completion-map
               ("<tab>" . copilot-accept-completion)
               ("TAB" . copilot-accept-completion)
@@ -725,7 +725,8 @@
   )
 (setq copilot-node-executable "/usr/local/bin/node")
 (require 'copilot)
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; Disabled auto-enable; enable manually via `M-x copilot-mode`.
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 (setq copilot-indent-offset-warning-disable t)
@@ -965,7 +966,8 @@
 ; (setq copilot-node-executable "/home/ubuntu/.nvm/versions/node/v22.6.0/bin/node")
 (add-to-list 'load-path "~/workspace/dotfiles/emacs.d/elisp/copilot.el")
 (require 'copilot)
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; Disabled auto-enable; enable manually via `M-x copilot-mode`.
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 ;; (require 'copilot-chat)
