@@ -363,7 +363,10 @@
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'dark)
   (load-theme 'k-bx-2 t)
-  (load-theme 'k-bx t))
+  (load-theme 'k-bx t)
+  ;; Ensure markdown inline code is visible on dark
+  (when (fboundp 'kb-apply-markdown-code-faces)
+    (kb-apply-markdown-code-faces)))
 (defun dark2 ()
   (interactive)
   (disable-all-themes)
@@ -388,16 +391,17 @@
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
-  (load-theme 'solarized-selenized-white t))
+  (load-theme 'solarized-selenized-white t)
+  (when (fboundp 'kb-apply-markdown-code-faces)
+    (kb-apply-markdown-code-faces)))
   ;; (load-theme 'adwaita t))
 (defun light2 ()
   (interactive)
   (disable-all-themes)
   (customize-set-variable 'frame-background-mode 'light)
   (load-theme 'solarized-light-high-contrast t)
-  ;; Apply markdown code customization after theme loads
-  (when (facep 'markdown-inline-code-face)
-    (set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold)))
+  (when (fboundp 'kb-apply-markdown-code-faces)
+    (kb-apply-markdown-code-faces)))
 (defun light3 ()
   (interactive)
   (disable-all-themes)
@@ -629,17 +633,26 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(defun kb-apply-markdown-code-faces ()
+  "Apply readable colors for Markdown inline and code faces based on theme."
+  (let* ((dark? (eq frame-background-mode 'dark))
+         (inline-fg (if dark? "#fce94f" "#073642")))
+    (when (facep 'markdown-inline-code-face)
+      (set-face-attribute 'markdown-inline-code-face nil :foreground inline-fg :weight 'bold))
+    (when (facep 'markdown-code-face)
+      (set-face-attribute 'markdown-code-face nil :foreground inline-fg :weight 'bold))))
 (defun my-markdown-mode-hook ()
   "Custom configurations for markdown-mode."
   (interactive)
   (adaptive-wrap-prefix-mode t)
   (toggle-word-wrap t)
-  ;; Set stronger color for code blocks
-  (set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold))
+  ;; Ensure inline code has good contrast
+  (kb-apply-markdown-code-faces))
 
 ;; Also apply after markdown loads
 (eval-after-load 'markdown-mode
-  '(set-face-attribute 'markdown-inline-code-face nil :foreground "#073642" :weight 'bold))
+  '(when (fboundp 'kb-apply-markdown-code-faces)
+     (kb-apply-markdown-code-faces)))
 (add-hook 'markdown-mode-hook 'my-markdown-mode-hook)
 
 
